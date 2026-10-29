@@ -116,7 +116,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
   .progress-orb-pulse{animation:none}
 }
 
-/* NSDR / Body Scan silhouette */
+/* Body Scan silhouette */
 .body-silhouette{position:relative;width:80px;height:200px;flex-shrink:0;margin:0 auto}
 .body-silhouette svg{width:100%;height:100%;overflow:visible}
 .body-region{transition:fill .8s ease,filter .8s ease,opacity .8s ease;fill:var(--surfaceL);opacity:.5}
@@ -267,7 +267,7 @@ const BS = {
   "← Back":"← Назад","Begin":"Започни","Stop":"Заустави","Again":"Поново","Home":"Почетна",
   "Ready":"Спремно","Complete":"Завршено","Cycles":"Циклуси","Done ✓":"Готово ✓",
   "Next Step":"Сљедећи корак","← Prev":"← Претх.","Skip →":"Прескочи →","← End":"← Крај",
-  "Save":"Сачувај","Today":"Данас","History":"Хисторија","Write":"Пиши","Entries":"Уноси",
+  "Save":"Сачувај","Today":"Данас","History":"Историја","Write":"Пиши","Entries":"Уноси",
   "Send":"Пошаљи","Later":"Касније","Install":"Инсталирај","All Tests":"Сви тестови",
   "← Tests":"← Тестови","← Exercises":"← Вјежбе","← All Categories":"← Све категорије",
   "End Early":"Заврши раније","Off":"Искључено","Write Another":"Напиши још",
@@ -279,7 +279,7 @@ const BS = {
   "Physio Sigh":"Физиолошки уздах","Quick relief":"Брза помоћ",
   "Breathing":"Дисање","3–8 min":"3–8 мин",
   "Body Scan":"Скенирање тијела","~2.5 min":"~2.5 мин",
-  "NSDR":"НСДР","10–20 min":"10–20 мин",
+  "10–20 min":"10–20 мин",
   "Soundscapes":"Звучни пејзажи","Rain · Waves · Beats":"Киша · Валови · Ритмови",
   "Daily practice":"Дневна пракса","Journal":"Дневник","Write & reflect":"Пиши и рефлектуј",
   "CBT Exercises":"КБТ вјежбе","Anxiety · Depression · Panic":"Анксиозност · Депресија · Паника",
@@ -298,7 +298,7 @@ const BS = {
   "Physiological Sigh":"Физиолошки уздах",
   "Double inhale through nose, long exhale through mouth. The fastest evidence-based stress relief.":"Двоструки удах кроз нос, дуги издах кроз уста. Најбрже научно доказано олакшање стреса.",
   "How it works":"Како функционише",
-  "The double inhale maximally inflates alveoli, increasing CO₂ offloading surface area. The long exhale activates parasympathetic response via the vagus nerve. Stanford (2023) found 5 minutes of cyclic sighing outperformed meditation for anxiety.":"Двоструки удах максимално напухава алвеоле, повећавајући површину за уклањање CO₂. Дуги издах активира парасимпатички одговор преко вагусног нерва. Станфорд (2023) је утврдио да је 5 минута цикличног уздисања било ефикасније од медитације за анксиозност.",
+  "The double inhale maximally inflates alveoli, increasing CO₂ offloading surface area. The long exhale activates parasympathetic response via the vagus nerve. Stanford (2023) found 5 minutes of cyclic sighing outperformed other relaxation exercises for anxiety.":"Двоструки удах максимално напухава алвеоле, повећавајући површину за уклањање CO₂. Дуги издах активира парасимпатички одговор преко вагусног нерва. Станфорд (2023) је утврдио да је 5 минута цикличног уздисања било ефикасније од других вјежби опуштања за анксиозност.",
   "first breath through nose":"први удах кроз нос","quick second sip":"брзи други удах",
   "long out through mouth":"дуги издах кроз уста","natural pause":"природна пауза",
   "Inhale":"Удахните","Inhale Again":"Удахните поново","Exhale Slowly":"Полако издахните","Rest":"Одмор",
@@ -318,11 +318,6 @@ const BS = {
   "Where stress hides. Roll awareness through shoulders and neck. Let them drop.":"Гдје се стрес крије. Проведите свјесност кроз рамена и врат. Пустите их да падну.",
   "Soften your jaw. Relax forehead. Eyes rest behind closed lids. A wave of calm.":"Омекшајте вилицу. Опустите чело. Очи почивају иза затворених капака. Вал смирења.",
   "Expand awareness to entire body. Breathing, alive, present, at peace.":"Проширите свјесност на цијело тијело. Дисање, живот, присутност, мир.",
-  // NSDR
-  "Non-Sleep Deep Rest":"Дубоки одмор без спавања",
-  "Yoga nidra-style protocol. Deeply restorative — easier than meditation.":"Протокол у стилу јога нидре. Дубоко обнављајућ — лакши од медитације.",
-  "Begin NSDR":"Започни НСДР","Deep Rest Complete":"Дубоки одмор завршен",
-  "Take your time before returning to activity.":"Узмите времена прије повратка активностима.",
   // Assessments
   "Validated screening tools. Not diagnostic — consult a professional for clinical evaluation.":"Валидирани алати за процјену. Нису дијагностички — консултујте стручњака за клиничку процјену.",
   "Anxiety · 7 questions · 2 weeks":"Анксиозност · 7 питања · 2 седмице",
@@ -337,7 +332,7 @@ const BS = {
   "Not enough data":"Недовољно података",
   // Gratitude
   "What are you grateful for?":"За шта сте захвални?","Saved ✓":"Сачувано ✓","No entries yet.":"Нема још уноса.",
-  "I'm grateful for…":"Захвалан/на сам за…","And also…":"И такођер…",
+  "I'm grateful for…":"Захвалан/на сам за…","And also…":"И још…",
   // Journal
   "How are you feeling?":"Како се осјећате?","Start writing…":"Почните писати…","words":"ријечи",
   "Good":"Добро","Calm":"Мирно","Neutral":"Неутрално","Low":"Ниско","Anxious":"Анксиозно","Sad":"Тужно",
@@ -359,7 +354,7 @@ const BS = {
   "The Worry Tree":"Стабло бриге","Cognitive Defusion":"Когнитивна дефузија","Anxiety Surfing":"Сурфање на анксиозности",
   "Pleasure & Mastery Schedule":"Распоред задовољства и постигнућа","Self-Compassion Break":"Пауза саосјећања према себи","Values Reconnection":"Повезивање с вриједностима","Opposite Action":"Супротна акција",
   "Paced 6-2-7 Breathing":"Дисање 6-2-7","Panic Surfing":"Сурфање на паници",
-  "Stress & Burnout":"Стрес и исцрпљеност","The Container Exercise":"Вјежба спремника","Body-Based Stress Release":"Ослобађање стреса кроз тијело","The Energy Audit":"Преглед енергије","TIPP Skill":"ТИПП вјештина","Mountain Meditation":"Медитација планине",
+  "Stress & Burnout":"Стрес и исцрпљеност","The Container Exercise":"Вјежба спремника","Body-Based Stress Release":"Ослобађање стреса кроз тијело","The Energy Audit":"Преглед енергије","TIPP Skill":"ТИПП вјештина","Mountain Stillness":"Мир планине",
   "Meaning & Acceptance":"Смисао и прихватање","Values Clarification":"Разјашњавање вриједности","Letter From Your 80-Year-Old Self":"Писмо од вашег 80-годишњег ја","Memento Mori Reflection":"Мементо Мори рефлексија","Wise Mind":"Мудри ум","Compassionate Witness":"Саосјећајни свједок",
   "30 sec":"30 сек","90 sec":"90 сек","2 min":"2 мин","3 min":"3 мин","4 min":"4 мин","5 min":"5 мин","1 min":"1 мин",
   "What is CBT?":"Шта је CBT?",
@@ -381,7 +376,7 @@ const BS = {
   "Layered harmonic tones with subtle detuning":"Слојевити хармонични тонови с благим расклимавањем",
   "Stereo frequency offset for brainwave entrainment. Use headphones.":"Стерео фреквенцијски помак за усклађивање можданих валова. Користите слушалице.",
   "Sleep Timer":"Тајмер за спавање","About the sounds":"О звуковима",
-  "All audio is synthesized in real-time using the Web Audio API — no files are downloaded or stored. Binaural beats require headphones: slightly different frequencies play in each ear, and your brain perceives the difference as a rhythmic pulse. Theta (5 Hz) promotes deep relaxation ideal for NSDR and meditation. Delta (2 Hz) aids sleep. Alpha (10 Hz) supports calm focus.":"Сав звук се синтетизира у реалном времену користећи Web Audio API — ниједна датотека се не преузима нити похрањује. Бинаурални ритмови захтијевају слушалице: благо различите фреквенције се пуштају у свако ухо, а ваш мозак перципира разлику као ритмички пулс. Тхета (5 Hz) промовише дубоку релаксацију идеалну за НСДР и медитацију. Делта (2 Hz) помаже спавању. Алпха (10 Hz) подржава миран фокус.",
+  "All audio is synthesized in real-time using the Web Audio API — no files are downloaded or stored. Binaural beats require headphones: slightly different frequencies play in each ear, and your brain perceives the difference as a rhythmic pulse. Theta (5 Hz) promotes deep relaxation ideal for deep rest. Delta (2 Hz) aids sleep. Alpha (10 Hz) supports calm focus.":"Сав звук се синтетизира у реалном времену користећи Web Audio API — ниједна датотека се не преузима нити похрањује. Бинаурални ритмови захтијевају слушалице: благо различите фреквенције се пуштају у свако ухо, а ваш мозак перципира разлику као ритмички пулс. Тхета (5 Hz) промовише дубоку релаксацију идеалну за дубоки одмор. Делта (2 Hz) помаже спавању. Алпха (10 Hz) подржава миран фокус.",
   "Deep sleep":"Дубоки сан","Deep relaxation":"Дубока релаксација","Calm focus":"Миран фокус",
   "Sounds will fade in ":"Звукови ће нестати за ",
   // Missing entries found in audit
@@ -389,7 +384,7 @@ const BS = {
   "Breathe In":"Удахните","Breathe Out":"Издахните","Hold":"Држите",
   "exercises":"вјежби","guided steps":"вођених корака","words":"ријечи",
   "Start writing…":"Почните писати…",
-  "I'm grateful for…":"Захвалан/на сам за…","And also…":"И такођер…",
+  "I'm grateful for…":"Захвалан/на сам за…","And also…":"И још…",
   "Step":"Корак",
   "Write & reflect":"Пиши и рефлектуј",
   "Theta · 5 Hz":"Тхета · 5 Hz","Delta · 2 Hz":"Делта · 2 Hz","Alpha · 10 Hz":"Алпха · 10 Hz",
@@ -1062,7 +1057,7 @@ const CBT_EXERCISES = {
         "P — Paced breathing. Inhale 4, exhale 8. The longer exhale is the key. 5 cycles minimum.",
         "P — Paired muscle relaxation. Tense fists for 5 seconds. Release. Tense shoulders 5 seconds. Release. Work through the whole body.",
         "TIPP doesn't fix the cause of stress. It buys you time — 20 minutes of clearer thinking to make the next decision wisely."]},
-      {name:"Mountain Meditation",time:"5 min",steps:[
+      {name:"Mountain Stillness",time:"5 min",steps:[
         "Sit upright. Close your eyes. Breathe normally for 30 seconds.",
         "Imagine a mountain. Yours. Something specific — maybe one you've seen, maybe imagined. Solid base. Strong middle. Peak in the sky.",
         "Imagine yourself becoming this mountain. Your legs are the base. Your torso is the slopes. Your head is the peak.",
@@ -1247,44 +1242,65 @@ function Sigh({onBack}){
       React.createElement('button',{onClick:stop,className:'secondary-btn'},t('Stop'))),
     React.createElement('div',{className:'card',style:{maxWidth:340,marginTop:8}},
       React.createElement('div',{style:{fontSize:13,color:'var(--accent)',fontFamily:'var(--font-d)',marginBottom:8}},t('How it works')),
-      React.createElement('div',{style:{fontSize:12,color:'var(--textM)',lineHeight:1.7}},t('The double inhale maximally inflates alveoli, increasing CO₂ offloading surface area. The long exhale activates parasympathetic response via the vagus nerve. Stanford (2023) found 5 minutes of cyclic sighing outperformed meditation for anxiety.')))
+      React.createElement('div',{style:{fontSize:12,color:'var(--textM)',lineHeight:1.7}},t('The double inhale maximally inflates alveoli, increasing CO₂ offloading surface area. The long exhale activates parasympathetic response via the vagus nerve. Stanford (2023) found 5 minutes of cyclic sighing outperformed other relaxation exercises for anxiety.')))
   );
 }
 
 // ═══════════════════════════════════════════════════════════════
 // BODY SCAN
 // ═══════════════════════════════════════════════════════════════
+const vrijeme=x=>_lang==='bs'?String(x).replace(/\bmin\b/g,'мин').replace(/\bsec\b/g,'сек'):x;
+function BodySilhouette({stepName}){
+  const on=n=>stepName==='Whole Body'||stepName===n;
+  const cls=n=>'body-region'+(on(n)?' active glow':'');
+  const E=React.createElement;
+  return E('div',{className:'body-silhouette','aria-hidden':'true'},
+    E('svg',{viewBox:'0 0 80 200'},
+      E('g',{className:cls('Face & Head')},E('ellipse',{cx:40,cy:16,rx:11,ry:13})),
+      E('g',{className:cls('Shoulders & Neck')},E('rect',{x:35,y:28,width:10,height:8,rx:3}),E('path',{d:'M18 40 Q22 34 34 35 L46 35 Q58 34 62 40 L60 46 L20 46 Z'})),
+      E('g',{className:cls('Hands & Arms')},E('path',{d:'M17 42 Q11 46 10 62 L8 92 Q8 98 12 98 Q15 98 15 93 L18 64 L22 50 Z'}),E('path',{d:'M63 42 Q69 46 70 62 L72 92 Q72 98 68 98 Q65 98 65 93 L62 64 L58 50 Z'})),
+      E('g',{className:cls('Abdomen & Chest')},E('path',{d:'M21 47 L59 47 L57 76 Q56 86 54 92 L26 92 Q24 86 23 76 Z'})),
+      E('g',{className:cls('Hips & Lower Back')},E('path',{d:'M26 93 L54 93 Q58 100 57 110 L23 110 Q22 100 26 93 Z'})),
+      E('g',{className:cls('Legs')},E('path',{d:'M23 111 L39 111 L37 150 L35 182 L27 182 L25 150 Z'}),E('path',{d:'M41 111 L57 111 L55 150 L53 182 L45 182 L43 150 Z'})),
+      E('g',{className:cls('Feet & Toes')},E('path',{d:'M26 184 L36 184 L37 192 Q37 196 32 196 L22 196 Q19 196 21 192 Z'}),E('path',{d:'M44 184 L54 184 L59 192 Q61 196 58 196 L48 196 Q43 196 43 192 Z'}))
+    ));
+}
 function BodyScan({onBack}){
-  const[step,setStep]=useState(0);const[active,setActive]=useState(false);const[timer,setTimer]=useState(0);const iv=useRef(null);
-  const start=()=>{setStep(0);setActive(true);setTimer(BODY_REGIONS[0].dur);};
+  const[step,setStep]=useState(0);const[active,setActive]=useState(false);const[timer,setTimer]=useState(0);const[done,setDone]=useState(false);
+  const start=()=>{setStep(0);setDone(false);setTimer(BODY_REGIONS[0].dur);setActive(true);};
   useEffect(()=>{
     if(!active)return;
-    iv.current=setInterval(()=>{setTimer(p=>{
-      if(p<=1){if(step<BODY_REGIONS.length-1){const n=step+1;setStep(n);return BODY_REGIONS[n].dur;}else{setActive(false);return 0;}}
-      return p-1;});},1000);
-    return()=>clearInterval(iv.current);
-  },[active,step]);
-  const progress=active?((step+(1-timer/BODY_REGIONS[step].dur))/BODY_REGIONS.length)*100:0;
+    const iv=setInterval(()=>setTimer(p=>p-1),1000);
+    return()=>clearInterval(iv);
+  },[active]);
+  useEffect(()=>{
+    if(!active||timer>0)return;
+    if(step<BODY_REGIONS.length-1){const n=step+1;setStep(n);setTimer(BODY_REGIONS[n].dur);try{if(navigator.vibrate)navigator.vibrate(15);}catch(e){}}
+    else{setActive(false);setDone(true);}
+  },[timer,active,step]);
+  const cur=BODY_REGIONS[step];
+  const progress=active?((step+(1-Math.max(timer,0)/cur.dur))/BODY_REGIONS.length)*100:0;
   return React.createElement('div',{className:'page',style:{display:'flex',flexDirection:'column',alignItems:'center',gap:24,paddingTop:8}},
     React.createElement('button',{onClick:onBack,className:'back-btn'},t('← Back')),
     React.createElement('h2',{className:'h2'},t('Body Scan')),
-    !active&&step===0&&React.createElement(React.Fragment,null,
+    !active&&!done&&React.createElement(React.Fragment,null,
+      React.createElement(BodySilhouette,{stepName:''}),
       React.createElement('p',{style:{color:'var(--textM)',maxWidth:360,textAlign:'center',lineHeight:1.7,fontSize:14}},t('Guided scan through 8 body regions. Close your eyes and follow.')),
       React.createElement('button',{onClick:start,className:'primary-btn'},t('Begin (~2.5 min)'))),
     active&&React.createElement(React.Fragment,null,
       React.createElement('div',{style:{width:'100%',maxWidth:360,height:4,background:'var(--surface)',borderRadius:2,overflow:'hidden'}},
         React.createElement('div',{style:{height:'100%',width:progress+'%',background:'var(--accent)',borderRadius:2,transition:'width 1s linear'}})),
       React.createElement('div',{style:{fontSize:13,color:'var(--textD)'}},`${step+1} / ${BODY_REGIONS.length}`),
-      React.createElement(BodySilhouette,{stepName:BODY_REGIONS[step].name,accent:'var(--accent)'}),
+      React.createElement(BodySilhouette,{stepName:cur.name}),
       React.createElement('div',{className:'card',style:{maxWidth:360,textAlign:'center'}},
-        React.createElement('div',{style:{fontSize:20,color:'var(--accent)',fontFamily:'var(--font-d)',marginBottom:12}},t(BODY_REGIONS[step].name)),
-        React.createElement('p',{style:{color:'var(--textM)',lineHeight:1.8,fontSize:15}},t(BODY_REGIONS[step].p)),
-        React.createElement('div',{style:{marginTop:16,fontSize:28,fontFamily:'var(--font-d)'}},timer+'s')),
-      React.createElement('button',{onClick:()=>{setActive(false);setStep(0);},className:'secondary-btn'},t('End Early'))),
-    !active&&step>0&&React.createElement('div',{style:{textAlign:'center'}},
+        React.createElement('div',{style:{fontSize:20,color:'var(--accent)',fontFamily:'var(--font-d)',marginBottom:12}},t(cur.name)),
+        React.createElement('p',{style:{color:'var(--textM)',lineHeight:1.8,fontSize:15}},t(cur.p)),
+        React.createElement('div',{style:{marginTop:16,fontSize:28,fontFamily:'var(--font-d)'}},Math.max(timer,0)+' с')),
+      React.createElement('button',{onClick:()=>{setActive(false);setStep(0);setDone(false);},className:'secondary-btn'},t('End Early'))),
+    done&&React.createElement('div',{style:{textAlign:'center'}},
       React.createElement('div',{style:{fontSize:48,marginBottom:12}},'✦'),
       React.createElement('div',{style:{color:'var(--accent)',fontSize:20,fontFamily:'var(--font-d)'}},t('Complete')),
-      React.createElement('button',{onClick:()=>setStep(0),className:'primary-btn',style:{marginTop:16}},t('Again')))
+      React.createElement('button',{onClick:()=>{setDone(false);setStep(0);},className:'primary-btn',style:{marginTop:16}},t('Again')))
   );
 }
 
@@ -1361,9 +1377,17 @@ const MOLITVE = {
     uvod:'Прије него што узмете телефон у руке за било шта друго — подарите први тренутак дана Богу.',
     pocetne:true,
     stavke:[
+      {"naslov": "Ако немате снаге за цијело правило", "tip": "tisina", "tekst": "Свети Серафим Саровски је онима који немају времена или снаге за дуже молитве дао кратко правило: три пута „Оче наш“, три пута „Богородице Дјево“ и једном „Символ вјере“.\nБоље је кратко, пажљиво и од срца, него дуго и расијано. Читајте онолико колико можете. Бог гледа срце."},
+      {"naslov": "Тропари по устајању од сна", "napomena": "Тројични тропари.", "tekst": "Уставши од сна, падамо пред Тобом, Благи, и анђелску пјесму кличемо Ти, Силни: Свет, Свет, Свет јеси, Боже, Богородицом помилуј нас.\nСлава Оцу и Сину и Светоме Духу.\nИз постеље и сна подигао си ме, Господе; просвијетли ми ум и срце, и отвори уста моја да Те пјевам, Света Тројице: Свет, Свет, Свет јеси, Боже, Богородицом помилуј нас.\nИ сада и увијек и у вијекове вијекова. Амин.\nИзненада ће доћи Судија, и свачија ће се дјела открити; али са страхом зовимо у поноћи: Свет, Свет, Свет јеси, Боже, Богородицом помилуј нас."},
+      {"naslov": "Молитва Светог Макарија Великог", "tekst": "Боже, очисти ме грешнога, јер никакво добро не учиних пред Тобом, него ме избави од зла, и нека буде у мени воља Твоја, да без осуде отворим недостојна уста моја и славим име Твоје свето, Оца и Сина и Светога Духа, сада и увијек и у вијекове вијекова. Амин."},
+      {"naslov": "Молитва по устајању", "tekst": "Теби, Владико Човјекољупче, уставши од сна прибјегавам, и на дјела Твоја по милосрђу Твоме хитам, и молим Ти се: помози ми у свако вријеме и у свакој ствари, избави ме од сваког зла и од сваког навођења ђавољег, спаси ме и уведи у вјечно Царство Твоје. Јер си Ти мој Творац и сваког добра Промислитељ и Даватељ; у Тебе је сва нада моја, и Теби славу узносим, сада и увијек и у вијекове вијекова. Амин."},
+      {"naslov": "Псалам 50", "napomena": "Покајни псалам пророка Давида.", "djelo": "Псалам 50 (51), превод Ђуре Даничића", "tekst": "Смилуј се на ме, Боже, по милости својој, и по великој доброти својој очисти безакоња моја.\nОпери ме добро од безакоња мојега, и од гријеха мојега очисти ме.\nЈер безакоња своја знам, и гријех је мој једнако преда мном.\nТеби једноме згријеших, и зло пред тобом учиних; тако си праведан у ријечима својим и чист у суду својему.\nЕво, у безакоњу родих се, и у гријеху затрудње мати моја мном.\nЕво, ти љубиш истину у срцу, и изнутра јављаш ми мудрост.\nПокропи ме исопом, и очистићу се; умиј ме, и бићу бјељи од снијега.\nДај ми да чујем радост и весеље, и нека се обрадују кости које си сломио.\nОдврати лице своје од гријеха мојих, и сва безакоња моја очисти.\nСрце чисто створи ми, Боже, и дух прав понови у мени.\nНемој ме одбацити од лица својега, и Духа твојега светога немој узети од мене.\nПоврати ми радост спасења својега, и духом владалачким утврди ме.\nНаучићу безаконике путовима твојим, и безбожници ће се к теби обратити.\nИзбави ме од крви, Боже, Боже спасења мојега, и језик ће мој хвалити правду твоју.\nГосподе, отвори уста моја, и уста ће моја казивати хвалу твоју.\nЈер жртве не желиш, ја бих је дао; на жртву паљеницу не гледаш.\nЖртва је Богу дух скрушен; срца скрушенога и смјернога, Боже, не одбацујеш.\nУчини добро по милости својој Сиону; сазидај зидове Јерусалимске.\nТада ће ти бити угодне жртве правде, принос и паљеница; тада ће метати на олтар твој теоце."},
       {naslov:'Символ вјере',tekst:'Вјерујем у једнога Бога Оца, Сведржитеља, Творца неба и земље и свега видљивог и невидљивог.\nИ у једнога Господа Исуса Христа, Сина Божијег, Јединороднога, рођенога од Оца прије свих вијекова; Свјетлост од Свјетлости, Бога истинитог од Бога истинитог; рођенога, а не створенога, једносушнога Оцу, кроз Кога је све постало;\nКоји је ради нас људи и ради нашега спасења сишао с небеса, и оваплотио се од Духа Светога и Марије Дјеве, и постао човјек;\nИ Који је распет за нас у вријеме Понтија Пилата, и страдао, и био погребен;\nИ Који је васкрсао у трећи дан по Писму;\nИ Који се вазнио на небеса и сједи са десне стране Оца;\nИ Који ће опет доћи са славом да суди живима и мртвима, и Његовом Царству неће бити краја.\nИ у Духа Светога, Господа животворнога, Који од Оца исходи, Који се са Оцем и Сином заједно поштује и заједно слави, Који је говорио кроз пророке.\nУ једну, свету, саборну и апостолску Цркву.\nИсповиједам једно крштење за отпуштење гријехова.\nЧекам васкрсење мртвих,\nи живот будућега вијека. Амин.'},
       {naslov:'Молитва Светом Анђелу Чувару',tekst:'Анђеле Божји, чувару мој свети, који си ми од Бога с неба дат на чување, усрдно те молим: просвијетли ме данас, и од сваког зла сачувај, ка добру дјелу упути, и на пут спасења усмјери. Амин.'},
+      {"naslov": "Молитва Светог Филарета Московског", "napomena": "Молитва потпуног предања вољи Божијој — нарочито у данима бриге и страха.", "tekst": "Господе, не знам шта да иштем од Тебе. Ти једини знаш шта ми је потребно. Ти ме волиш више него што ја умијем себе да волим. Оче, дај слузи Своме оно што ја сам не умијем да искам.\nНе усуђујем се да тражим ни крст ни утјеху; само стојим пред Тобом. Срце ми је отворено; Ти видиш потребе које ја не знам. Види, и учини са мном по милости Својој.\nПорази и исцијели, обори и подигни ме. Благоговим и ћутим пред Твојом светом вољом и Твојим за мене недокучивим судовима. Себе Теби приносим на жртву. Предајем Ти се. Немам друге жеље осим жеље да испуним вољу Твоју.\nНаучи ме да се молим. Ти Сам у мени моли се. Амин."},
       {naslov:'Молитва Оптинских стараца',napomena:'За почетак дана.',tekst:'Господе, дај ми да са душевним миром дочекам све што ће ми донијети овај дан. Дај ми да се потпуно предам вољи Твојој светој. У сваком часу овога дана упућуј ме и подржи ме у свему. Какве год вијести да примим у току дана, научи ме да их примим мирне душе и са чврстим увјерењем да је на све воља Твоја света.\nРуководи мојим мислима и осјећањима у свим ријечима и дјелима мојим. У свим непредвиђеним случајевима не дај ми да заборавим да је све од Тебе послато. Научи ме да право и разборито поступам са сваким чланом моје породице, никога не огорчавајући и не жалостећи.\nГосподе, дај ми снаге да поднесем умор овога дана и све догађаје у току дана. Руководи вољом мојом и научи ме да се молим, да вјерујем, да се надам, да трпим, да праштам и да волим. Амин.'},
+      {"naslov": "Молитва за живе", "napomena": "На мјесту (имена) додајте имена својих ближњих.", "tekst": "Спаси, Господе, и помилуј оца мога духовног (име), родитеље моје (имена), сроднике, кумове, пријатеље и све који ми добро чине, и све православне хришћане. Болеснима подај исцјељење, тужнима утјеху, онима у невољи помоћ, а свима нама опроштај гријехова и спасење душе."},
+      {"naslov": "Молитва за упокојене", "tekst": "Упокој, Господе, душе уснулих слугу Твојих (имена), и свих од вијека уснулих отаца и браће наше, и опрости им сва сагрјешења, вољна и невољна, и даруј им Царство небеско. Вјечан им спомен."},
       {naslov:'Молитва Пресветој Богородици',tekst:'Богородице Дјево, радуј се, благодатна Марија, Господ је с тобом; благословена си ти међу женама и благословен је плод утробе твоје, јер си родила Спаса душа наших.'},
       {naslov:'',tekst:'Молитвама светих отаца наших, Господе Исусе Христе, Боже наш, помилуј нас. Амин.'}
     ]
@@ -1374,8 +1398,12 @@ const MOLITVE = {
     pocetne:true,
     stavke:[
       {naslov:'Испитивање савјести',tip:'tisina',tekst:'Прије молитве, у тишини се сјетите дана.\nГдје сам данас осјетио мир? За шта могу да захвалим?\nГдје сам изгубио мир? Кога сам повриједио ријечју, мишљу или дјелом?\nКоме треба да опростим, а од кога да тражим опроштај?\nНе осуђујте себе и не правдајте се. Само уочите — и предајте Богу.'},
+      {"naslov": "Молитва Светог Макарија Великог", "napomena": "Вечерња молитва.", "tekst": "Вјечни Боже и Царе свакога створења, Који си ме удостојио да доживим до овога часа, опрости ми гријехе које учиних данас дјелом, ријечју и мишљу, и очисти, Господе, смирену душу моју од сваке нечистоте тијела и духа.\nИ дај ми, Господе, да ову ноћ проведем у сну мирно, да бих, уставши са смиреног одра свога, угађао пресветом имену Твоме у све дане живота свога, и побиједио непријатеље који ратују против мене, тјелесне и бестјелесне.\nИ избави ме, Господе, од сујетних помисли које ме скрнаве, и од злих жеља. Јер је Твоје Царство и сила и слава, Оца и Сина и Светога Духа, сада и увијек и у вијекове вијекова. Амин."},
+      {"naslov": "Из молитве Светог Јована Златоустог", "napomena": "Одломак — кратке молбе које се могу изговарати полако, једна по једна.", "tekst": "Господе, не лиши ме небеских Твојих добара.\nГосподе, избави ме од вјечних мука.\nГосподе, ако сагријеших умом или мишљу, ријечју или дјелом, опрости ми.\nГосподе, избави ме од сваког незнања и заборава, и малодушности, и окамењене безосјећајности.\nГосподе, избави ме од сваког искушења.\nГосподе, просвијетли срце моје које је помрачила зла жеља.\nГосподе, ја као човјек сагријеших, а Ти као Бог милосрдни помилуј ме, видећи немоћ душе моје.\nГосподе, пошаљи благодат Твоју у помоћ мени, да прославим име Твоје свето.\nГосподе Исусе Христе, упиши мене, слугу Твога, у књигу живота и даруј ми добар крај.\nГосподе, дај ми сузе и сјећање на смрт и умиљење.\nГосподе, дај ми смиреноумље, чедност и послушност.\nГосподе, дај ми трпљење, великодушност и кротост.\nГосподе, усади у мене коријен добра — страх Твој у срце моје.\nГосподе, удостој ме да Те љубим из све душе своје и мисли, и да у свему чиним вољу Твоју."},
+      {"naslov": "Молитва за ближње", "tekst": "Онима који нас мрзе и вријеђају опрости, Господе Човјекољупче. Онима који нам добро чине, добро учини. Браћи и сродницима нашим подај што траже за спасење и живот вјечни. Болесне посјети и исцијели. Путницима буди сапутник. Онима који нам служе и милостињу дају, опрости гријехе.\nСјети се, Господе, уснулих отаца и браће наше, и упокој их гдје сија свјетлост лица Твога.\nСјети се, Господе, и нас смирених, грешних и недостојних слугу Твојих, и просвијетли ум наш свјетлошћу познања Твога, и упути нас на стазу заповијести Твојих, молитвама Пречисте Владичице наше Богородице и свих Твојих светих. Амин."},
       {naslov:'Молитва Светом Анђелу Чувару',tekst:'Анђеле Христов, чувару мој свети и заштитниче душе и тијела мога, опрости ми све што сагријеших данас, и од сваког лукавства непријатеља мога избави ме, да ни у једном гријеху не прогњевим Бога мога; него моли се за мене грешног и недостојног слугу, да ме покажеш достојним благости и милости Свесвете Тројице и Матере Господа мога Исуса Христа и свих светих. Амин.'},
       {naslov:'Молитва Пресветој Богородици',tekst:'Достојно је заиста да те блаженом зовемо, Богородице, увијек блажена и пренепорочна и Мати Бога нашега. Часнија од херувима и неупоредиво славнија од серафима, која си без истљења родила Бога Логоса, ти си заиста Богородица, тебе величамо.'},
+      {"naslov": "Молитва Светог Јоаникија", "tekst": "Нада моја је Отац, уточиште моје Син, заштита моја Дух Свети. Тројице Света, слава Теби."},
       {naslov:'Пред спавање',napomena:'Прекрстите постељу и себе.',tekst:'У руке Твоје, Господе Исусе Христе, Боже мој, предајем дух свој. Ти ме благослови, Ти ме помилуј и живот вјечни ми даруј. Амин.'},
       {naslov:'',tekst:'Молитвама светих отаца наших, Господе Исусе Христе, Боже наш, помилуј нас. Амин.'}
     ]
@@ -1618,8 +1646,8 @@ function Gratitude({onBack}){
       React.createElement('div',{style:{padding:'14px 18px',background:'var(--surface)',borderRadius:12,border:'1px solid var(--cardBorder)',display:'flex',alignItems:'center',gap:12}},
         React.createElement('div',{style:{flex:1,fontSize:13,color:'var(--warm)',lineHeight:1.5}},'✦ '+t(prompt)),
         React.createElement('button',{onClick:()=>setPrompt(rand(GRAT_PROMPTS)),style:{background:'none',border:'none',color:'var(--warmD)',cursor:'pointer',fontSize:18}},'↻')),
-      React.createElement('div',{style:{fontSize:14,color:'var(--textM)',textAlign:'center'}},saved?"Saved ✓":"What are you grateful for?"),
-      ...[0,1,2].map(i=>React.createElement('textarea',{key:i,value:items[i],onChange:e=>{const u=[...items];u[i]=e.target.value;setItems(u);setSaved(false);},placeholder:i===0?"I'm grateful for…":"And also…",rows:2,style:{padding:'10px 14px',borderRadius:12,border:'1px solid var(--surfaceL)',background:'var(--surface)',color:'var(--text)',fontSize:14,lineHeight:1.6,outline:'none',width:'100%'}})),
+      React.createElement('div',{style:{fontSize:14,color:'var(--textM)',textAlign:'center'}},saved?t("Saved ✓"):t("What are you grateful for?")),
+      ...[0,1,2].map(i=>React.createElement('textarea',{key:i,value:items[i],onChange:e=>{const u=[...items];u[i]=e.target.value;setItems(u);setSaved(false);},placeholder:i===0?t("I'm grateful for…"):t("And also…"),rows:2,style:{padding:'10px 14px',borderRadius:12,border:'1px solid var(--surfaceL)',background:'var(--surface)',color:'var(--text)',fontSize:14,lineHeight:1.6,outline:'none',width:'100%'}})),
       !saved&&items.some(i=>i.trim())&&React.createElement('button',{onClick:save,className:'primary-btn'},t("Save"))),
     view==='history'&&React.createElement('div',{style:{display:'flex',flexDirection:'column',gap:12}},
       entries.length===0&&React.createElement('div',{style:{color:'var(--textD)',textAlign:'center',padding:20}},t('No entries yet.')),
@@ -1650,7 +1678,7 @@ function Journal({onBack}){
         ['write','entries'].map(v=>React.createElement('button',{key:v,onClick:()=>setView(v),className:'pill',style:{background:view===v?'var(--accent)':'var(--surface)',color:view===v?'var(--bg)':'var(--textM)'}},v==='write'?t('Write'):t('Entries'))))),
     React.createElement('h2',{className:'h2'},t('Journal')),
     React.createElement('div',{style:{display:'flex',justifyContent:'center',gap:24}},
-      [{v:entries.length,l:'Entries',c:'var(--accent)'},{v:totalWords,l:'Words',c:'var(--warm)'}].map(s=>
+      [{v:entries.length,l:t('Entries'),c:'var(--accent)'},{v:totalWords,l:t('Words'),c:'var(--warm)'}].map(s=>
         React.createElement('div',{key:s.l,style:{textAlign:'center'}},
           React.createElement('div',{style:{fontSize:24,color:s.c,fontFamily:'var(--font-d)',fontWeight:600}},s.v),
           React.createElement('div',{style:{fontSize:11,color:'var(--textD)',textTransform:'uppercase',letterSpacing:1}},s.l)))),
@@ -1766,7 +1794,7 @@ function CBT({onBack}){
           React.createElement('div',{style:{fontSize:28,opacity:.6}},data.icon),
           React.createElement('div',null,
             React.createElement('div',{style:{fontSize:16,color:data.color,fontFamily:'var(--font-d)',fontWeight:600}},t(data.title)),
-            React.createElement('div',{style:{fontSize:12,color:'var(--textD)',marginTop:4}},data.exercises.length+' '+t('exercises')+' · '+data.exercises.map(e=>e.time).join(', ')))))),
+            React.createElement('div',{style:{fontSize:12,color:'var(--textD)',marginTop:4}},data.exercises.length+' '+t('exercises')+' · '+data.exercises.map(e=>vrijeme(e.time)).join(', ')))))),
     React.createElement('div',{className:'card',style:{marginTop:4}},
       React.createElement('div',{style:{fontSize:13,color:'var(--accent)',fontFamily:'var(--font-d)',marginBottom:8}},t('What is CBT?')),
       React.createElement('div',{style:{fontSize:12,color:'var(--textM)',lineHeight:1.7}},t('Cognitive Behavioral Therapy is the most researched form of psychotherapy. It works by helping you identify and change unhelpful thinking patterns and behaviors. These quick exercises are self-help adaptations — not a replacement for professional therapy, but effective tools for in-the-moment relief.'))));
@@ -1780,7 +1808,7 @@ function CBT({onBack}){
       React.createElement('button',{key:i,onClick:()=>{setEx(i);setStep(0);},className:'card',style:{width:'100%',textAlign:'left',cursor:'pointer'}},
         React.createElement('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center'}},
           React.createElement('div',{style:{fontSize:15,color:'var(--text)',fontWeight:500}},t(exercise.name)),
-          React.createElement('span',{style:{fontSize:12,color:'var(--textD)',padding:'3px 10px',background:'var(--surface)',borderRadius:12}},exercise.time)),
+          React.createElement('span',{style:{fontSize:12,color:'var(--textD)',padding:'3px 10px',background:'var(--surface)',borderRadius:12}},vrijeme(exercise.time))),
         React.createElement('div',{style:{fontSize:12,color:'var(--textD)',marginTop:6}},exercise.steps.length+' '+t('guided steps')))));
 
   const exercise=data.exercises[ex];
@@ -2146,7 +2174,7 @@ function Soundscape({onBack}) {
     React.createElement('div', { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center' } },
       React.createElement('button', { onClick: () => { AudioEngine.stopAll(); onBack(); }, className: 'back-btn' }, t('← Back')),
       anyActive && React.createElement('button', { onClick: () => { AudioEngine.playBowl(); }, style: { background: 'none', border: 'none', color: 'var(--warm)', cursor: 'pointer', fontSize: 14 } }, '🔔 Bowl')),
-    React.createElement('h2', { className: 'h2' }, 'Soundscapes'),
+    React.createElement('h2', { className: 'h2' }, t('Soundscapes')),
     React.createElement('p', { style: { color: 'var(--textM)', fontSize: 13, textAlign: 'center', lineHeight: 1.6 } },
       t('Procedurally generated ambient audio. Layer sounds together and adjust the mix. No files — synthesized in real-time.')),
     
@@ -2192,7 +2220,7 @@ function Soundscape({onBack}) {
       React.createElement('div', { style: { display: 'flex', gap: 8, flexWrap: 'wrap' } },
         ...[0, 10, 20, 30, 45, 60].map(min => React.createElement('button', { key: min, onClick: () => startTimer(min),
           className: 'pill', style: { background: timer === min ? 'var(--accent)' : 'var(--surface)', color: timer === min ? 'var(--bg)' : 'var(--textM)', padding: '8px 14px' } },
-          min === 0 ? 'Off' : min + ' min'))),
+          min === 0 ? t('Off') : min + ' мин'))),
       timerLeft > 0 && React.createElement('div', { style: { marginTop: 8, fontSize: 13, color: 'var(--accent)' } },
         'Sounds will fade in ' + fmt(timerLeft))),
     
@@ -2200,7 +2228,7 @@ function Soundscape({onBack}) {
     React.createElement('div', { className: 'card', style: { marginTop: 8 } },
       React.createElement('div', { style: { fontSize: 13, color: 'var(--accent)', fontFamily: 'var(--font-d)', marginBottom: 8 } }, t('About the sounds')),
       React.createElement('div', { style: { fontSize: 12, color: 'var(--textM)', lineHeight: 1.7 } },
-        t('All audio is synthesized in real-time using the Web Audio API — no files are downloaded or stored. Binaural beats require headphones: slightly different frequencies play in each ear, and your brain perceives the difference as a rhythmic pulse. Theta (5 Hz) promotes deep relaxation ideal for NSDR and meditation. Delta (2 Hz) aids sleep. Alpha (10 Hz) supports calm focus.'))),
+        t('All audio is synthesized in real-time using the Web Audio API — no files are downloaded or stored. Binaural beats require headphones: slightly different frequencies play in each ear, and your brain perceives the difference as a rhythmic pulse. Theta (5 Hz) promotes deep relaxation ideal for deep rest. Delta (2 Hz) aids sleep. Alpha (10 Hz) supports calm focus.'))),
     
     anyActive && React.createElement('button', { onClick: () => { AudioEngine.stopAll(); setActive({}); }, className: 'secondary-btn', style: { width: '100%' } }, t('Stop All Sounds'))
   );
