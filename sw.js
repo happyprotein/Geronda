@@ -1,4 +1,4 @@
-const CACHE_NAME = 'geronda-v2';
+const CACHE_NAME = 'geronda-v3';
 const ASSETS = [
   './',
   './index.html',

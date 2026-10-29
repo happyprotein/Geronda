@@ -177,8 +177,22 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
 @keyframes g-s1{0%,30%{opacity:0}33%,67%{opacity:1}70%,100%{opacity:0}}
 @keyframes g-s2{0%,33%{opacity:0}36%,64%{opacity:1}67%,100%{opacity:0}}
 @keyframes g-s3{0%,36%{opacity:0}39%,61%{opacity:1}64%,100%{opacity:0}}
+/* поздрав на додир — 3 s: наклон напријед, осмијех, трептај у дну наклона */
+.geronda-hero{cursor:pointer;outline:none;-webkit-user-select:none;user-select:none}
+.geronda-hero.tap{animation:g-bow 3s cubic-bezier(.45,.05,.35,1) both}
+@keyframes g-bow{0%{transform:perspective(700px) rotateX(0) translateY(0)}32%,52%{transform:perspective(700px) rotateX(-13deg) translateY(5px) scale(.99)}100%{transform:perspective(700px) rotateX(0) translateY(0)}}
+.geronda-hero.tap .g-s1{animation:g-ts1 3s ease-in-out both}
+.geronda-hero.tap .g-s2{animation:g-ts2 3s ease-in-out both}
+.geronda-hero.tap .g-s3{animation:g-ts3 3s ease-in-out both}
+@keyframes g-ts1{0%,4%{opacity:0}12%,82%{opacity:1}92%,100%{opacity:0}}
+@keyframes g-ts2{0%,10%{opacity:0}18%,76%{opacity:1}86%,100%{opacity:0}}
+@keyframes g-ts3{0%,16%{opacity:0}25%,70%{opacity:1}80%,100%{opacity:0}}
+.geronda-hero.tap .g-b1{animation:g-tb1 3s linear both}
+.geronda-hero.tap .g-b2{animation:g-tb2 3s linear both}
+@keyframes g-tb1{0%,36%{opacity:0}37%{opacity:1}38%{opacity:0}40.3%{opacity:1}41.5%,100%{opacity:0}}
+@keyframes g-tb2{0%,37.4%{opacity:0}38.2%,39.8%{opacity:1}40.6%,100%{opacity:0}}
 @keyframes hero-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.012)}}
-@media (prefers-reduced-motion: reduce){.geronda-hero,.g-ov{animation:none}}
+@media (prefers-reduced-motion: reduce){.geronda-hero,.geronda-hero.tap,.g-ov{animation:none}.geronda-hero.tap .g-s3{animation:g-ts3 3s ease-in-out both}}
 /* Old breathe-circle kept for backwards compat but unused */
 .breathe-circle{border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:all 1s cubic-bezier(.4,0,.2,1)}
 .breathe-circle.slow{transition-duration:6s}
@@ -2167,6 +2181,17 @@ function Soundscape({onBack}) {
 // DASHBOARD
 // ═══════════════════════════════════════════════════════════════
 function Dashboard({onNav}){
+  // Додир на старца: наклон, осмијех, трептај
+  const[pozdrav,setPozdrav]=useState(false);
+  const pozdravT=useRef(null);
+  const dodir=()=>{
+    if(pozdrav)return;
+    setPozdrav(true);
+    try{if(navigator.vibrate)navigator.vibrate(12);}catch(e){}
+    clearTimeout(pozdravT.current);
+    pozdravT.current=setTimeout(()=>setPozdrav(false),3100);
+  };
+  useEffect(()=>()=>clearTimeout(pozdravT.current),[]);
   const history=store.get('assessments')||{};
   const journals=store.get('journal')||[];
   const gratitudes=store.get('gratitude')||[];
@@ -2183,7 +2208,7 @@ function Dashboard({onNav}){
     React.createElement('div',{style:{fontSize:11,color:'var(--textD)',marginTop:3}},a.sub));
   return React.createElement('div',{className:'page',style:{display:'flex',flexDirection:'column',gap:32,paddingTop:12}},
     React.createElement('div',{style:{display:'flex',flexDirection:'column',alignItems:'center',gap:16,paddingTop:20,paddingBottom:8}},
-      React.createElement('div',{className:'geronda-hero',role:'img','aria-label':'Геронда'},
+      React.createElement('div',{className:'geronda-hero'+(pozdrav?' tap':''),role:'button',tabIndex:0,'aria-label':'Геронда — додирни за поздрав',onClick:dodir,onKeyDown:e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();dodir();}}},
         React.createElement('img',{src:LOGO_SRC,alt:'',className:'g-base'}),
         ...GERONDA_OV.map(o=>React.createElement('img',{key:o.k,src:o.src,alt:'',className:'g-ov g-'+o.k,style:{left:o.l+'%',top:o.t+'%',width:o.w+'%',height:o.h+'%'}}))),
       React.createElement('div',{style:{display:'flex',flexDirection:'column',alignItems:'center',gap:6,marginTop:-6}},
