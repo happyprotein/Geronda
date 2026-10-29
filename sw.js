@@ -1,4 +1,4 @@
-const CACHE_NAME = 'geronda-v1';
+const CACHE_NAME = 'geronda-v2';
 const ASSETS = [
   './',
   './index.html',
@@ -14,8 +14,7 @@ const ASSETS = [
   './icons/icon-maskable-192.png',
   './icons/icon-maskable-512.png',
   './icons/apple-touch-icon.png',
-  './icons/favicon.png',
-  './icons/geronda.webp'
+  './icons/favicon.png'
 ];
 
 self.addEventListener('install', (e) => {
