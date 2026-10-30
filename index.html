@@ -222,6 +222,15 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;heigh
 .ikona-natpis span{font-size:11px;color:var(--textD);letter-spacing:.3px;font-style:italic}
 body[data-theme="dark"] .ikona-okvir{box-shadow:0 10px 34px rgba(0,0,0,.45),0 0 40px rgba(201,169,97,.12),0 0 0 1px rgba(110,80,32,.55)}
 @media (prefers-reduced-motion: reduce){.kandilo .plamen{animation:none}}
+.odgovor-karta{animation:odg-in .5s ease both}
+@keyframes odg-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.lestvica{display:flex;flex-direction:column;gap:8px}
+.stepen{background:var(--bgCard);border:1px solid var(--cardBorder);border-radius:14px;transition:all .3s;max-width:calc(100% - 0px)}
+.stepen.otvoren{margin-left:0!important;border-color:rgba(184,149,79,.4)}
+.stepen-dugme,.stepen-izbor{display:flex;align-items:center;gap:12px;width:100%;padding:12px 14px;background:none;border:none;cursor:pointer;font-family:var(--font-cyr);color:var(--text)}
+.stepen-izbor{background:var(--bgCard);border:1px solid var(--cardBorder);border-radius:14px}
+.stepen-izbor:hover,.stepen-dugme:hover{background:rgba(184,149,79,.06)}
+.stepen-br{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:linear-gradient(145deg,#d9bd78,#a8823d);color:#fff;font-size:13px;font-weight:600;flex-shrink:0}
 .top-bar{display:flex;justify-content:space-between;align-items:center;padding:10px 20px;max-width:440px;margin:0 auto;position:relative;z-index:10}
 .brand-top{font-size:10px;color:var(--accentD);font-weight:600;letter-spacing:1.5px}
 .toggle-group{display:flex;gap:8px;align-items:center}
@@ -1444,9 +1453,16 @@ const MOLITVE = {
       {"naslov": "Старац Порфирије — нема мјеста очајању", "tip": "clanak", "citat": "Жив је Бог. Када изгубиш сваку наду, Он ти пошаље нешто што уопште не очекујеш.", "izvor": "Старац Порфирије", "tekst": "Старац разликује покајање од унинија: „Једно је униније, а друго покајање.“ Покајање је свијетло и води напријед; униније гризе и затвара човјека у самог себе. Зато савјетује: „Када сагријешиш, не очајавај.“\nИ још: „Када си у Цркви, нема мјеста очајању, ма шта да си учинио, ма шта да ти се догодило.“\nКада наиђу униније и туга, старац није савјетовао само молитву него и покрет — да се одмах устане и изађе у шетњу, у природу.", "djelo": "Старац Порфирије, Цвијетослов савјета, поглавља „Безнађе — униније — жалости“ и „Жалости — униније — стрес“"},
       {"naslov": "Старац Пајсије — повјерење умјесто бриге", "tip": "clanak", "citat": "Када се потпуно предаш Богу, тада ти више нема потребе да за нешто молиш или да се бринеш.", "izvor": "Старац Пајсије Светогорац", "tekst": "Старац Пајсије каже кратко: „Молитва је повјерење Богу.“ Бриге, по његовим ријечима, расијавају ум и сметају молитви. Зато предлаже да Богу оставимо да Сам дјелује, и да за све славимо Бога.\nО тешким стањима униније и туге старац учи да се са њима човјек не може борити сам. Потребни су му духовник, Црква и људи који га воле.", "djelo": "о. Дионисије Тацис, Када туђи бол постане свој (поуке старца Пајсија), гл. 3"},
       {"naslov": "Старац Пајсије — добре помисли", "tip": "clanak", "tekst": "У књизи „Духовна борба“ старац Пајсије стално говори о добрим помислима. Свака ситуација се може тумачити на добро или на зло, а од тумачења зависи мир душе. Ко се научи да у свему тражи добар смисао и корист за душу, тај се ослобађа многих брига, несанице и душевних мука, о којима старац у тој књизи говори.\nСтарац при томе није тражио само слушање. Тражио је да се поука примијени у животу, свакога дана.\nОво је веома блиско ономе што данас КБТ назива преиначењем мисли: умјесто „све иде наопако“, учимо се да питамо „шта ми Бог овим показује и шта добро могу из овога да извучем?“", "djelo": "Старац Пајсије Светогорац, Поуке, том III: Духовна борба"},
+      {"naslov": "Свети Теофан Затворник — униније и немоћ тијела", "tip": "clanak", "citat": "Што сада бива униније, то је од тјелесне немоћи.", "izvor": "Свети Теофан Затворник, писмо болеснику", "tekst": "Свети Теофан, руски епископ и затворник из XIX вијека, писао је стотинама људи који су му се обраћали за савјет. Болеснику који се жалио на униније није рекао да је то гријех ни слабост вјере. Рекао му је да униније долази од тјелесне немоћи.\nДругоме пише: „Болест није прекор, нити је знак да те је Бог одбацио.“ А трећем: „Трпите благодушно своју болешљивост и благодарите Бога за њу.“\nОвдје се види мудрост коју данас потврђује и медицина. Тијело и душа су једно, и када је тијело исцрпљено, болесно или неиспавано, и душа тоне. Тада не треба кривити себе, него се одморити, лијечити и стрпљиво чекати.", "djelo": "Свети Теофан Затворник, Сабрана писма, св. 1, писма 26, 33 и 38 (превод са руског)"},
+      {"naslov": "Свети Теофан Затворник — страх без разлога", "tip": "clanak", "citat": "Све је од Бога, и пријатно и непријатно.", "izvor": "Свети Теофан Затворник", "tekst": "О страху који долази без стварног разлога Свети Теофан кратко каже: „Вражији страх је тамо гдје страха нема.“ Нема потребе да се са таквим страхом расправљамо и да му доказујемо да није у праву. Лијек је повјерење да смо у рукама Божијим, ма шта да дође.\nЗато савјетује да и за пријатно и за непријатно захваљујемо Богу. Захвалност отвара срце, а страх га стеже.", "djelo": "Свети Теофан Затворник, изводи из писама (превод са руског)"},
       {"naslov": "Митрополит Јеротеј — Црква као болница", "tip": "clanak", "citat": "Такозвани психолошки проблеми јесу у ствари проблеми помисли, помрачења ума и нечистог срца.", "izvor": "Митрополит Навпактски Јеротеј (Влахос)", "tekst": "У књизи „Православна психотерапија“, по којој и ова апликација носи свој поднаслов, митрополит Јеротеј показује да је Православље у својој суштини лијечење душе. Црква је, по Оцима, лјечилиште, а Свете Тајне и подвиг су лијекови: чишћење срца, просвјетљење ума и сједињење са Богом.\nМитрополит при томе изричито каже да овакав приступ не одбацује ни психијатрију ни тјелесну медицину. Он говори о дубљем, духовном коријену човјекове муке.", "djelo": "Митрополит Јеротеј (Влахос), Православна психотерапија, Увод"},
       {"naslov": "Жан-Клод Ларше — разликовати болести", "tip": "clanak", "tekst": "Француски православни богослов Жан-Клод Ларше проучио је шта Оци Истока уче о душевним болестима. Показао је да су Оци разликовали више поријекла тих болести: неке потичу од тијела, неке од демонског дејства, а неке од страсти која је узела маха у души.\nЗа нас је ово важно јер значи да свака душевна болест није гријех нити знак слабе вјере. Многе имају и тјелесни узрок, и тада им је потребно и љекарско лијечење, као и свакој другој болести. Мудрост је у разликовању, а то разликовање чине заједно духовник и љекар.", "djelo": "Жан-Клод Ларше, Душевни поремећаји и духовно исцјељење (Mental Disorders and Spiritual Healing)"},
+      {"naslov": "Жан-Клод Ларше — медицина је дар", "tip": "clanak", "citat": "Медицина је схватана као дар који је Бог дао људима, а свако лијечење као оно које долази од Бога.", "izvor": "Жан-Клод Ларше", "tekst": "Ларше подсјећа да су још древни Оци учили да код болести тијела слободно можемо прибјећи медицини. Каже и да душевна болест може имати тјелесни узрок, а може бити повезана и са духовним болестима. Зато човјеку треба помоћи цијелом: и тијелу, и души, и духу.\nО страдању пише са великом надом: „Ако живимо у Христу, болести, страдања и смрт губе моћ да нам науде и да нас униште.“\nНа српском језику постоји његова књига „Теологија болести“ (Ниш–Београд, 2008).", "djelo": "Жан-Клод Ларше, интервју „Дар страдања, дар медицине, дар смисла“ (превод са руског)"},
       {"naslov": "Владета Јеротић — вјера и психотерапија", "tip": "clanak", "tekst": "Академик Владета Јеротић био је психијатар и психотерапеут, и уједно православни хришћанин и писац. Више од деценије је на Православном богословском факултету у Београду предавао пасторалну психологију.\nЦијелог живота је показивао да психотерапија и вјера нису непријатељи. То показују и наслови његових књига: „Неуроза као изазов“, „Психотерапија и религија“ и „50 питања и 50 одговора из хришћанско-психотерапеутске праксе“. Његов примјер нас учи да је могуће бити и вјерник и пацијент, и да једно не умањује друго.", "djelo": "Владета Јеротић, Психотерапија и религија; 50 питања и 50 одговора"},
+      {"naslov": "Савремени православни психолози", "tip": "tisina", "tekst": "Данас постоје љекари и психолози који су уједно православни хришћани, а неки и свештеници. Они траже начин да се наука о души и предање Цркве срету, без мијешања и без супротстављања.\nЊихове мисли дајемо у сажетку, уз назнаку дјела."},
+      {"naslov": "о. Василије Термос — жеђ за љубављу и истином", "tip": "clanak", "tekst": "Отац Василије Термос је грчки свештеник и богослов, доктор Богословског факултета у Атини, и уједно психијатар за дјецу и младе.\nУ књизи „У потрази за личношћу“ упоређује учење психоаналитичара Доналда Виникота о „правом“ и „лажном“ сопству са учењем Светог Григорија Паламе. У књизи „Жеђ за љубављу и истином“ показује да наша душа чезне за правим животом, који даје Дух Свети. На путу ка њему стоје и унутрашње препреке, психолошке ране, и спољашње, збуњено и грешно друштво.\nПо његовом мишљењу, науке о души могу бити драгоцјене, ако се користе са поштовањем према „скривеном благу које је Господ повјерио нашој личности“. Тако свјетовно знање може служити духовном напретку.", "djelo": "о. Василије Термос, In Search of the Person (2002); Thirst for Love and Truth (2010)"},
+      {"naslov": "Дмитриј Авдејев — православна психијатрија", "tip": "clanak", "citat": "Депресија је својеврсни сигнал душе о неблагостању, о њеном тешком положају.", "izvor": "Дмитриј Авдејев", "tekst": "Дмитриј Авдејев је московски психијатар и психотерапеут, кандидат медицинских наука. Пише књиге о душевним болестима из православног угла: „Православна психијатрија“, „Душевне болести — православни поглед“ и „Ако душа плаче… савјети православног љекара“.\nСвојим пацијентима помаже и лијековима и разговором, али каже да је најсрећнији када разговор дође до душе, вјере и покајања. Психотерапеут, по њему, не замјењује свештеника, него му претходи. Помаже човјеку да отвори срце, како би могао да приђе вјери и Светим Тајнама. Зато се залаже да љекар и свештеник раде заједно.", "djelo": "Д. А. Авдејев, Православна психијатрија (1997) (превод са руског)"},
+      {"naslov": "Борис Братусь — хришћанска психологија", "tip": "clanak", "citat": "Човјек нашег вијека је психички здрав, а лично болестан.", "izvor": "Борис Братусь", "tekst": "Професор Борис Братусь са Московског државног универзитета један је од зачетника правца који се назива хришћанска психологија. У тај правац спаја научну психологију са богословљем и философијом.\nУчио је да психу треба посматрати у свјетлу духовних и моралних смислова и вриједности. Човјек није само скуп функција. Он је јединствена личност која тражи смисао. Зато неко може бити „психички здрав“, а ипак лично болестан: празан, без смисла, затворен у себе.\nОво је важно за свакога ко пати. Исцјељење није само нестанак симптома, него и повратак смислу и љубави.", "djelo": "Б. С. Братусь, радови о хришћанској психологији и смисаоним творевинама личности (превод са руског)"},
       {naslov:'Шта нам Оци поручују данас',tip:'lista',lista:['Туга није гријех. Униније се не побјеђује осуђивањем себе, него трпљењем и малим корацима.','Не остајте сами: исповиједите се, разговарајте са духовником и са блиским људима.','Држите ритам дана — мало рада, мало молитве, па опет рад (Антоније Велики).','Тијело и душа су једно: сан, храна, кретање и свјетлост дана нису споредни.','Ако туга или страх трају дуже од двије седмице, ако су ту несаница, губитак апетита или мисли о смрти — обратите се љекару. То је мудрост, а не маловјерје.','Ако имате мисли о самоубиству, одмах позовите Плави телефон 080 05 03 05 или Хитну помоћ 124. Нисте сами.']}
     ]
   },
@@ -2383,7 +2399,7 @@ function OAplikaciji({onBack}){
       P('„Геронда“ (грч. γέροντας) значи старац — духовни отац коме се душа повјерава. Старац не осуђује, него слуша, тјеши и води ка Христу.'),
       P('Ова апликација не може замијенити ни духовника ни љекара. Жели само да буде мали сапутник у дану — подсјетник на молитву, на мудрост Отаца и на мале кораке који враћају мир.',{marginTop:10})),
     React.createElement('div',{className:'card'},H('Шта ћете наћи'),
-      L(['Православни календар — светитељи сваког дана и ознака поста','Јутарње и вечерње молитве, Бројаница са Исусовом молитвом','Исповијест и Причешће — смисао и припрема','Свети Оци и свети старци о тузи, унинију, страху и болести','Вјежбе дисања, скенирање тијела и звучни пејзажи','КБТ вјежбе за анксиозност, депресију и панику','Дневник, захвалност и упитници за самопроцјену'])),
+      L(['Православни календар — светитељи сваког дана и ознака поста','Јутарње и вечерње молитве, Бројаница са Исусовом молитвом','Исповијест и Причешће — смисао и припрема','Свети Оци и свети старци о тузи, унинију, страху и болести','Одговор старца — Варсануфије и Јован о ономе што осјећате','Од помисли до страсти — вјежба по Лествици и „Православној психотерапији“','Вјежбе дисања, скенирање тијела и звучни пејзажи','КБТ вјежбе за анксиозност, депресију и панику','Дневник, захвалност и упитници за самопроцјену'])),
     React.createElement('div',{className:'card',style:{textAlign:'center'}},
       P('„Ходите к мени сви који сте уморни и натоварени, и ја ћу вас одморити.“',{fontSize:16,color:'var(--text)',fontStyle:'italic'}),
       React.createElement('div',{style:{fontSize:12,color:'#C9A961',marginTop:8,fontFamily:'var(--font-cyr)'}},'Јеванђеље по Матеју 11, 28')),
@@ -2398,6 +2414,162 @@ function OAplikaciji({onBack}){
       React.createElement('div',{style:{fontSize:14,color:'var(--textM)',fontStyle:'italic'}},'Молитвама светих отаца наших, Господе Исусе Христе, Боже наш, помилуј нас. Амин.'),
       React.createElement('div',{style:{fontSize:12,color:'var(--textD)',marginTop:14,letterSpacing:1}},'Цимеша Лаб · Бијељина'),
       React.createElement('div',{style:{fontSize:11,color:'var(--textD)',marginTop:4,opacity:.8}},'Верзија 1.6'))
+  );
+}
+
+
+const OSJECANJA=[
+  {id:'tuga',naziv:'Туга',ik:'☁'},{id:'uninije',naziv:'Немам снаге',ik:'◌'},{id:'strah',naziv:'Страх и брига',ik:'❖'},
+  {id:'misli',naziv:'Узнемирене мисли',ik:'≋'},{id:'savjest',naziv:'Савјест ме мучи',ik:'✧'},{id:'bolest',naziv:'Болест',ik:'✚'},{id:'gnjev',naziv:'Гњев',ik:'ϟ'}
+];
+const ODGOVORI=[
+  {o:'tuga',br:511,pit:'Брат у тешком страдању моли старца за молитву и помоћ.',odg:'Зашто тугујеш, зашто вапијеш, зашто шаљеш далеко, када имаш Исуса Који стоји близу тебе? Призови Га: „Наставниче!“ Дотакни се скута Његове хаљине, и Он ће те исцијелити. Не тугуј — милост Божија је близу тебе.'},
+  {o:'tuga',br:619,pit:'Брат пита како да подноси жалост која га је снашла.',odg:'Потрпимо жалост са благодарношћу, да милост Божија сиђе на нас обилно. А малодушност води у пропаст.'},
+  {o:'tuga',br:405,pit:'Брат пита зашто долазе жалости на онога ко се труди да живи по Богу.',odg:'Нека нам буде познато да Бог жалост допушта ради нашег испитања. Али Бог никада не презире оне који Га се боје.'},
+  {o:'uninije',br:559,pit:'Брат пита како да разликује униније и шта да чини када га спопадне.',odg:'Има униније које долази од непријатеља, и против њега треба молитва и рад са трпљењем. А има и природно униније, које долази од немоћи тијела. Тада тијело треба одморити, у страху Божијем.'},
+  {o:'uninije',br:470,pit:'Брат пита одакле униније.',odg:'Срце наше не пребива у дјелању, зато и пада у униније.'},
+  {o:'uninije',br:560,pit:'Брат пита шта да ради када га униније савладава.',odg:'Униније се одгони трудом, уз призивање имена Божијег. Бјежање са мјеста на коме си, без тјелесне потребе, само појачава борбу.'},
+  {o:'strah',br:263,pit:'Брат жели да почне непрестано да се моли, али се боји да неће издржати.',odg:'Труд твога срца нека буде да се непрестано молиш Богу. Положи почетак и не бој се; Бог ће те укријепити и утврдити. Он ће ти дати снагу да сачуваш онолико колико је по твојој мјери.'},
+  {o:'strah',br:491,pit:'Брата помисли вуку натраг и плаши се да неће истрајати.',odg:'Храбри се у Господу. Не ужасавај се — имаш вођу ка Владици Богу.'},
+  {o:'misli',br:445,pit:'Брат пита шта да ради када му за вријеме молитве долазе узнемирујуће помисли.',odg:'Ако уђе помисао, не смућуј се. Мирно јој се одупри и призови Господа.'},
+  {o:'misli',br:555,pit:'Брат пита да ли да се расправља са помислима које га нападају.',odg:'Не пуштај помисао унутра и не разговарај са њом, него прибјегавај Богу.'},
+  {o:'misli',br:142,pit:'Брат покушава да размрси сваку мисао која му долази.',odg:'Не допуштај себи да расуђујеш о помислима које ти долазе: то није дјело твоје мјере.'},
+  {o:'misli',br:91,pit:'Брат пита шта да ради са упорном помишљу.',odg:'Не препирај се са непријатељском помисли, него се помоли за то Господу, полажући пред Њега своју немоћ.'},
+  {o:'savjest',br:59,pit:'Брат пита како да распозна одакле долазе помисли које га муче.',odg:'Помисли које долазе од демона прије свега су пуне смућења и туге.'},
+  {o:'savjest',br:452,pit:'Брат се мучи и тугује, мислећи да чини добро.',odg:'Свако дјело у коме има смућења није од Бога. Смири се и не дај гњеву да ти смути срце.'},
+  {o:'savjest',br:202,pit:'Брат моли старца да испуни обећање о опроштају гријехова.',odg:'Буди увјерен да ћеш добити оно што тражиш; али, када добијеш, чувај ту благодат.'},
+  {o:'bolest',br:512,pit:'Брат, тешко оптерећен болешћу, моли старца за исцјељење.',odg:'Бог мој да ти пошаље брзо исцјељење душе и тијела. Колико можеш, чувај благодарност према Њему, јер те је заволио и помиловао.'},
+  {o:'bolest',br:510,pit:'Болесни брат тугује због своје немоћи.',odg:'Не тугуј, Бог ти указује милост. Сагни своју главу, знајући колико су претрпјели свети мученици.'},
+  {o:'gnjev',br:495,pit:'Брат пита одакле се у њему рађа гњев.',odg:'Ни у ком случају не настој да све буде по твојој вољи, јер се од тога рађа гњев.'},
+  {o:'gnjev',br:502,pit:'Брат који се лако гњеви пита како да стекне мир.',odg:'Кад би се приморавао да умреш за свакога човјека и стекнеш мало смирења, могао би имати мир.'},
+  {o:'gnjev',br:662,pit:'Старца питају зашто не укори брата који гријеши.',odg:'Бог зна шта је корисно; тај брат је бољи од мене.'}
+];
+function OdgovorStarca({onBack}){
+  const danas=Math.floor((Date.now()-new Date(new Date().getFullYear(),0,0))/86400000);
+  const[osj,setOsj]=useState(null);
+  const[idx,setIdx]=useState(danas%ODGOVORI.length);
+  const lista=osj?ODGOVORI.filter(x=>x.o===osj):ODGOVORI;
+  const tr=osj?lista[idx%lista.length]:ODGOVORI[idx%ODGOVORI.length];
+  const izaberi=id=>{if(id===osj){setOsj(null);setIdx(danas%ODGOVORI.length);return;}setOsj(id);setIdx(Math.floor(Math.random()*ODGOVORI.filter(x=>x.o===id).length));};
+  const gold='#B8954F';
+  return React.createElement('div',{className:'page',style:{display:'flex',flexDirection:'column',gap:18,paddingTop:8}},
+    React.createElement('button',{onClick:onBack,className:'back-btn'},t('← Back')),
+    React.createElement('div',{style:{textAlign:'center'}},
+      React.createElement('div',{style:{fontSize:22,color:gold,marginBottom:4}},'✉'),
+      React.createElement('h2',{className:'h2',style:{fontFamily:'var(--font-cyr)',fontWeight:500}},'Одговор старца'),
+      React.createElement('p',{style:{color:'var(--textM)',fontSize:13,lineHeight:1.65,maxWidth:350,margin:'8px auto 0',fontStyle:'italic',fontFamily:'var(--font-cyr)'}},'Преподобни Варсануфије Велики и Јован живјели су у VI вијеку код Газе, у затвору своје келије. Монаси и мирјани писали су им о својим страховима, тугама и помислима, а они су им одговарали писмима. Сачувано је преко осам стотина тих одговора.')),
+    React.createElement('div',null,
+      React.createElement('div',{className:'section-label',style:{textAlign:'center',color:gold}},'Шта осјећате?'),
+      React.createElement('div',{style:{display:'flex',flexWrap:'wrap',gap:8,justifyContent:'center'}},
+        ...OSJECANJA.map(o=>React.createElement('button',{key:o.id,onClick:()=>izaberi(o.id),className:'pill',style:{background:osj===o.id?'var(--accent)':'var(--bgCard)',color:osj===o.id?'#fff':'var(--textM)',border:'1px solid '+(osj===o.id?'var(--accent)':'var(--cardBorder)'),padding:'8px 14px',fontFamily:'var(--font-cyr)',fontSize:14}},o.ik+' '+o.naziv)))),
+    React.createElement('div',{className:'card odgovor-karta',key:tr.br,style:{padding:'22px 22px 18px',display:'flex',flexDirection:'column',gap:14,border:'1px solid rgba(184,149,79,0.3)',background:'linear-gradient(180deg,rgba(184,149,79,0.07),transparent 60%),var(--bgCard)'}},
+      React.createElement('div',{style:{fontSize:11,color:'var(--textD)',letterSpacing:2,textTransform:'uppercase',fontWeight:600}},osj?'Одговор':'Одговор старца за данас'),
+      React.createElement('div',{style:{fontFamily:'var(--font-cyr)',fontSize:14,color:'var(--textM)',lineHeight:1.6}},React.createElement('span',{style:{color:gold}},'Питање: '),tr.pit),
+      React.createElement('div',{style:{fontFamily:'var(--font-cyr)',fontSize:18,color:'var(--text)',lineHeight:1.8,fontStyle:'italic'}},'„'+tr.odg+'“'),
+      React.createElement('div',{style:{fontSize:12,color:gold,fontFamily:'var(--font-cyr)'}},'— Преподобни Варсануфије и Јован, одговор '+tr.br),
+      React.createElement('button',{onClick:()=>setIdx(idx+1),className:'secondary-btn',style:{alignSelf:'center',padding:'8px 20px',fontSize:13,fontFamily:'var(--font-cyr)'}},'↻ Други одговор')),
+    React.createElement('p',{style:{fontSize:12,color:'var(--textD)',lineHeight:1.7,textAlign:'center',fontFamily:'var(--font-cyr)',padding:'0 6px 24px'}},'Одговори су наведени у нашем преводу са руског издања („Руководство к духовной жизни“), уз број одговора. Писани су монасима VI вијека — примјењујте их уз савјет свог духовника. Ако туга или страх дуго трају, обратите се и љекару.')
+  );
+}
+
+
+const STEPENI=[
+  {id:1,naziv:'Приљог',grc:'προσβολή',def:'Проста ријеч или слика неког предмета, која се изненада појави у уму и унесе у срце.',
+   sta:'Мисао је само дошла. Нисте је позвали и још ништа нисте учинили. Оци уче да приљог сам по себи није гријех — он долази свакоме, и светима.',
+   kbt:'Савремена психологија каже исто: наметнута, аутоматска мисао није ваш избор и не говори ништа о томе какви сте.',
+   lijek:'Не плашите се и не разговарајте са њом. Одсијеците је одмах кратком молитвом: „Господе Исусе Христе, помилуј ме.“ То је најлакши тренутак — мисао још нема снагу.'},
+  {id:2,naziv:'Сочетање',grc:'συνδυασμός',def:'Разговор са помисли која се појавила — задржавање на њој.',
+   sta:'Почели сте да разговарате са мишљу: да је вртите, расправљате се, замишљате. Пажња јој је дала простор.',
+   kbt:'То је оно што психологија зове руминацијом: кружење мисли које само појачава тјескобу.',
+   lijek:'Прекините разговор. Не доказујте мисли да није у праву и не препирите се са њом — „то није дјело твоје мјере“, каже Варсануфије. Вратите пажњу на молитву или на посао који је пред вама.'},
+  {id:3,naziv:'Сложење',grc:'συγκατάθεσις',def:'Пристанак душе на помисао, сједињен са наслађивањем.',
+   sta:'Душа је почела да пристаје — мисао вам се чини истинитом, или вас привлачи.',
+   kbt:'Овдје помаже да мисао испитате: Да ли је то чињеница или тумачење? Шта бих рекао пријатељу који овако мисли?',
+   lijek:'Још није касно. Зауставите се, помолите се и супротставите јој добру помисао. Ако вас мучи, поразговарајте са неким коме вјерујете, или је изнесите на исповијести.'},
+  {id:4,naziv:'Плијењење',grc:'αἰχμαλωσία',def:'Насилно и невољно повлачење срца, које руши добро унутрашње устројство.',
+   sta:'Мисао вас је повукла и тешко јој се отимате. Осјећате се заробљено.',
+   kbt:'Када мисли и осјећања постану овако снажни, човјеку је потребна подршка споља — сам се тешко извлачи.',
+   lijek:'Не очајавајте и не осуђујте себе. Сад је вријеме за трпљење и за тражење помоћи: духовник, ближњи. Ако ово стање дуго траје, обратите се и љекару или психотерапеуту.'},
+  {id:5,naziv:'Страст',grc:'πάθος',def:'Порок који се дуго гнијездио у души и навиком постао њено стање.',
+   sta:'Помисао се кроз понављање укоријенила и постала навика срца.',
+   kbt:'И психологија зна да се навика не мијења одједном, него малим, упорним корацима у супротном смјеру.',
+   lijek:'Лијечење је дуже, али могуће: редовна исповијест и Причешће, савјет духовника и мала свакодневна дјела супротна страсти. Ниједна страст није јача од благодати Божије.'}
+];
+function Pomisli({onBack,onNav}){
+  const[otvoren,setOtvoren]=useState(null);
+  const[korak,setKorak]=useState(0);
+  const[misao,setMisao]=useState('');
+  const[stepen,setStepen]=useState(null);
+  const[dobra,setDobra]=useState('');
+  const[zapisi,setZapisi]=useState(()=>store.get('pomisli')||[]);
+  const gold='#B8954F';
+  const sacuvaj=()=>{const z=[{t:Date.now(),m:misao.trim(),s:stepen,d:dobra.trim()},...zapisi].slice(0,50);setZapisi(z);store.set('pomisli',z);setKorak(4);};
+  const iznova=()=>{setKorak(0);setMisao('');setStepen(null);setDobra('');};
+  const ta={width:'100%',padding:'12px 14px',borderRadius:12,border:'1px solid var(--surfaceL)',background:'var(--surface)',color:'var(--text)',fontSize:15,lineHeight:1.6,fontFamily:'var(--font-cyr)',outline:'none'};
+  const P=(x,st)=>React.createElement('p',{style:Object.assign({fontFamily:'var(--font-cyr)',fontSize:15,color:'var(--textM)',lineHeight:1.75,margin:0},st||{})},x);
+  const S=stepen?STEPENI[stepen-1]:null;
+  return React.createElement('div',{className:'page',style:{display:'flex',flexDirection:'column',gap:18,paddingTop:8}},
+    React.createElement('button',{onClick:onBack,className:'back-btn'},t('← Back')),
+    React.createElement('div',{style:{textAlign:'center'}},
+      React.createElement('div',{style:{fontSize:22,color:gold,marginBottom:4}},'⟡'),
+      React.createElement('h2',{className:'h2',style:{fontFamily:'var(--font-cyr)',fontWeight:500}},'Од помисли до страсти'),
+      React.createElement('p',{style:{color:'var(--textM)',fontSize:13,lineHeight:1.6,maxWidth:340,margin:'8px auto 0',fontStyle:'italic',fontFamily:'var(--font-cyr)'}},'Како се мисао рађа, расте и заробљава — и како је зауставити на почетку.')),
+    React.createElement('div',{className:'card',style:{background:'rgba(184,149,79,0.06)',border:'1px solid rgba(184,149,79,0.22)'}},
+      React.createElement('div',{style:{fontFamily:'var(--font-cyr)',fontSize:16,color:gold,fontWeight:600,marginBottom:8}},'Ум и срце'),
+      P('Митрополит Јеротеј (Влахос) у „Православној психотерапији“ пише: „Такозвани психолошки проблеми јесу у ствари проблеми помисли, помрачења ума и нечистог срца.“'),
+      P('По учењу Отаца, ум (грч. νοῦς) је око душе. Када је расијан по свијету и заробљен помислима, душа пати. Исцјељење почиње када се ум, кроз молитву и пажњу, врати у срце — тамо гдје човјек стоји пред Богом. Зато Исусова молитва лијечи: сабира расијани ум.',{marginTop:10}),
+      React.createElement('div',{style:{fontSize:12,color:'var(--textD)',fontStyle:'italic',marginTop:10,fontFamily:'var(--font-cyr)'}},'Извор: Митрополит Јеротеј (Влахос), Православна психотерапија')),
+    React.createElement('div',null,
+      React.createElement('div',{className:'section-label',style:{color:gold}},'Пет степени — Лествица, 15. слово'),
+      React.createElement('div',{className:'lestvica'},
+        ...STEPENI.map((x,i)=>React.createElement('div',{key:x.id,className:'stepen'+(otvoren===x.id?' otvoren':''),style:{marginLeft:(i*14)+'px'}},
+          React.createElement('button',{onClick:()=>setOtvoren(otvoren===x.id?null:x.id),className:'stepen-dugme'},
+            React.createElement('span',{className:'stepen-br'},x.id),
+            React.createElement('span',{style:{flex:1,textAlign:'left'}},React.createElement('span',{style:{fontSize:16,color:'var(--text)'}},x.naziv),React.createElement('span',{style:{fontSize:11,color:'var(--textD)',marginLeft:8,fontStyle:'italic'}},x.grc)),
+            React.createElement('span',{style:{color:'var(--textD)',fontSize:12}},otvoren===x.id?'▴':'▾')),
+          otvoren===x.id&&React.createElement('div',{style:{padding:'4px 16px 16px',display:'flex',flexDirection:'column',gap:10}},
+            P('„'+x.def+'“',{fontStyle:'italic',color:'var(--text)'}),
+            P(x.sta),
+            P(React.createElement(React.Fragment,null,React.createElement('b',{style:{color:'var(--accentD)',fontWeight:600}},'Психологија: '),x.kbt),{fontSize:14}),
+            P(React.createElement(React.Fragment,null,React.createElement('b',{style:{color:gold,fontWeight:600}},'Лијек: '),x.lijek)))))),
+      React.createElement('div',{style:{fontSize:12,color:'var(--textD)',marginTop:8,fontFamily:'var(--font-cyr)',lineHeight:1.6}},'Што се раније мисао заустави, то је лакше.')),
+    React.createElement('div',{className:'card',style:{display:'flex',flexDirection:'column',gap:14}},
+      React.createElement('div',{style:{fontFamily:'var(--font-cyr)',fontSize:17,color:gold,fontWeight:600}},'Вјежба: ухвати помисао'),
+      korak===0&&React.createElement(React.Fragment,null,
+        P('Која мисао вас тренутно мучи или вуче? Запишите је једноставно, онако како долази.'),
+        React.createElement('textarea',{value:misao,onChange:e=>setMisao(e.target.value),rows:3,placeholder:'нпр. „Нешто ће сигурно поћи наопако…“',style:ta}),
+        React.createElement('button',{className:'primary-btn',disabled:!misao.trim(),onClick:()=>setKorak(1),style:{alignSelf:'center',opacity:misao.trim()?1:.5}},'Даље')),
+      korak===1&&React.createElement(React.Fragment,null,
+        P('Гдје сте сада са овом мишљу? Будите искрени — овдје нема осуде.'),
+        ...STEPENI.map(x=>React.createElement('button',{key:x.id,onClick:()=>{setStepen(x.id);setKorak(2);},className:'stepen-izbor'},
+          React.createElement('span',{className:'stepen-br'},x.id),
+          React.createElement('span',{style:{flex:1,textAlign:'left'}},React.createElement('span',{style:{display:'block',fontSize:15,color:'var(--text)'}},x.naziv),React.createElement('span',{style:{display:'block',fontSize:12,color:'var(--textD)',marginTop:2}},x.sta.split('.')[0]+'.'))))),
+      korak===2&&S&&React.createElement(React.Fragment,null,
+        React.createElement('div',{style:{fontSize:12,color:'var(--textD)',textTransform:'uppercase',letterSpacing:1.5}},'Степен '+S.id+' — '+S.naziv),
+        P(S.lijek,{color:'var(--text)'}),
+        stepen===1&&P('Добра вијест: ухватили сте је на самом почетку. Приљог није гријех.',{color:'var(--accentD)'}),
+        P('Сада супротставите јој добру помисао — истиниту, благу, онакву какву би вам рекао неко ко вас воли.',{marginTop:4}),
+        React.createElement('textarea',{value:dobra,onChange:e=>setDobra(e.target.value),rows:3,placeholder:'нпр. „Не знам шта ће бити, али нисам сам. Урадићу оно што је до мене, а остало предајем Богу.“',style:ta}),
+        React.createElement('div',{style:{display:'flex',gap:10,justifyContent:'center',flexWrap:'wrap'}},
+          React.createElement('button',{className:'secondary-btn',onClick:()=>setKorak(1)},'Назад'),
+          React.createElement('button',{className:'primary-btn',onClick:sacuvaj},'Предај Богу'))),
+      korak===4&&React.createElement(React.Fragment,null,
+        React.createElement('div',{style:{textAlign:'center',fontSize:30,color:gold}},'☦'),
+        P('Мисао је виђена и предата. Сада се кратко помолите — тридесет три пута Исусову молитву, полако, без журбе.',{textAlign:'center'}),
+        React.createElement('div',{style:{display:'flex',gap:10,justifyContent:'center',flexWrap:'wrap'}},
+          React.createElement('button',{className:'primary-btn',onClick:()=>onNav('brojanica')},'Бројаница'),
+          React.createElement('button',{className:'secondary-btn',onClick:iznova},'Нова помисао')))),
+    zapisi.length>0&&React.createElement('div',null,
+      React.createElement('div',{className:'section-label'},'Ваше забиљешке'),
+      React.createElement('div',{style:{display:'flex',flexDirection:'column',gap:10}},
+        ...zapisi.slice(0,10).map((z,i)=>React.createElement('div',{key:z.t,className:'card',style:{padding:'14px 16px'}},
+          React.createElement('div',{style:{display:'flex',justifyContent:'space-between',fontSize:11,color:'var(--textD)',marginBottom:6}},
+            React.createElement('span',null,new Date(z.t).toLocaleDateString('sr-Cyrl-BA',{day:'numeric',month:'short'})),
+            React.createElement('span',null,'Степен '+z.s+' — '+STEPENI[z.s-1].naziv)),
+          React.createElement('div',{style:{fontFamily:'var(--font-cyr)',fontSize:14,color:'var(--textM)',lineHeight:1.6}},'— '+z.m),
+          z.d&&React.createElement('div',{style:{fontFamily:'var(--font-cyr)',fontSize:14,color:'var(--accentD)',lineHeight:1.6,marginTop:4}},'✦ '+z.d))),
+        React.createElement('button',{onClick:()=>{if(true){setZapisi([]);store.set('pomisli',[]);}},style:{background:'none',border:'none',color:'var(--textD)',fontSize:12,cursor:'pointer',alignSelf:'center'}},'Обриши забиљешке'))),
+    React.createElement('p',{style:{fontSize:12,color:'var(--textD)',lineHeight:1.7,textAlign:'center',fontFamily:'var(--font-cyr)',padding:'0 6px 24px'}},'Дефиниције степени по Светом Јовану Лествичнику (Лествица, 15. слово) и Светом Ефрему Сирину, у нашем преводу. Забиљешке остају само на вашем телефону.')
   );
 }
 
@@ -2453,7 +2625,17 @@ function Dashboard({onNav}){
         React.createElement('div',{style:{fontSize:26,color:'#B8954F',flexShrink:0,width:30,textAlign:'center'}},'❧'),
         React.createElement('div',null,
           React.createElement('div',{style:{fontSize:15,color:'var(--text)',fontWeight:500,fontFamily:'var(--font-cyr)'}},'Свети Оци о души'),
-          React.createElement('div',{style:{fontSize:12,color:'var(--textD)',marginTop:3,lineHeight:1.5}},'Туга, униније, страх и болест — шта нас уче Оци')))),
+          React.createElement('div',{style:{fontSize:12,color:'var(--textD)',marginTop:3,lineHeight:1.5}},'Туга, униније, страх и болест — шта нас уче Оци'))),
+      React.createElement('button',{onClick:()=>onNav('odgovor'),className:'action-card',style:{width:'100%',display:'flex',alignItems:'center',gap:14,textAlign:'left',padding:'16px 18px',marginTop:10}},
+        React.createElement('div',{style:{fontSize:24,color:'#B8954F',flexShrink:0,width:30,textAlign:'center'}},'✉'),
+        React.createElement('div',null,
+          React.createElement('div',{style:{fontSize:15,color:'var(--text)',fontWeight:500,fontFamily:'var(--font-cyr)'}},'Одговор старца'),
+          React.createElement('div',{style:{fontSize:12,color:'var(--textD)',marginTop:3,lineHeight:1.5}},'Шта осјећате? Варсануфије и Јован одговарају'))),
+      React.createElement('button',{onClick:()=>onNav('pomisli'),className:'action-card',style:{width:'100%',display:'flex',alignItems:'center',gap:14,textAlign:'left',padding:'16px 18px',marginTop:10}},
+        React.createElement('div',{style:{fontSize:24,color:'#B8954F',flexShrink:0,width:30,textAlign:'center'}},'⟡'),
+        React.createElement('div',null,
+          React.createElement('div',{style:{fontSize:15,color:'var(--text)',fontWeight:500,fontFamily:'var(--font-cyr)'}},'Од помисли до страсти'),
+          React.createElement('div',{style:{fontSize:12,color:'var(--textD)',marginTop:3,lineHeight:1.5}},'Вјежба: ухвати мисао на почетку')))),
     React.createElement('div',null,React.createElement('div',{className:'section-label'},t('Reflect')),React.createElement('div',{className:'grid-2'},...reflect.map(a=>React.createElement(Card,{key:a.id,a})))),
     React.createElement('div',null,React.createElement('div',{className:'section-label'},t('Tools')),React.createElement('div',{className:'grid-2'},...tools.map(a=>React.createElement(Card,{key:a.id,a})))),
     Object.entries(history).map(([name,data])=>{if(data.length<2)return null;const last=data[data.length-1].s;const lbl=scoreLabel(name,last);
@@ -2564,7 +2746,7 @@ function Scene({type, theme}){
         React.createElement('rect', {x:-1.5, y:-12, width:3, height:12, fill:trunk}),
         React.createElement('ellipse', {cx:0, cy:-23, rx:11, ry:14, fill:leaf2}))
     );
-  } else if (type === 'brojanica' || type === 'ispovijest' || type === 'oci' || type === 'kalendar' || type === 'o-aplikaciji') {
+  } else if (type === 'brojanica' || type === 'ispovijest' || type === 'oci' || type === 'kalendar' || type === 'o-aplikaciji' || type === 'odgovor' || type === 'pomisli') {
     // Pravoslavna manastirska atmosfera — kupole, kandilo, zlatna svjetlost
     const dome = isDark ? '#2A3528' : '#4A5A42';
     const gold = '#C9A961';
@@ -2630,7 +2812,7 @@ function Scene({type, theme}){
     );
   }
   
-  const quiet=['brojanica','jutarnje','vecernje','ispovijest','oci','kalendar','o-aplikaciji'].includes(type);
+  const quiet=['brojanica','jutarnje','vecernje','ispovijest','oci','kalendar','o-aplikaciji','odgovor','pomisli'].includes(type);
   return React.createElement('div', {className:'scene-bg', key:type+theme, style:quiet?{opacity:.38}:undefined}, svg);
 }
 
@@ -2696,6 +2878,8 @@ function App(){
     (page==='jutarnje'||page==='vecernje'||page==='ispovijest'||page==='oci')&&React.createElement(Molitve,{key:page,vrsta:page,onBack:back}),
     page==='journal'&&React.createElement(Journal,{onBack:back}),
     page==='kalendar'&&React.createElement(Kalendar,{onBack:back}),
+    page==='odgovor'&&React.createElement(OdgovorStarca,{onBack:back}),
+    page==='pomisli'&&React.createElement(Pomisli,{onBack:back,onNav:setPage}),
     page==='o-aplikaciji'&&React.createElement(OAplikaciji,{onBack:back}),
     page==='assess'&&React.createElement(Assess,{onBack:back}),
     showBanner&&!isStandalone&&React.createElement('div',{className:'install-banner'},
