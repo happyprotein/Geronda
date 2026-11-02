@@ -22,6 +22,11 @@
 <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png">
 <title>Геронда</title>
+<script>
+window.__bip=null;
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();window.__bip=e;window.dispatchEvent(new Event('bip-ready'));});
+window.addEventListener('appinstalled',function(){try{localStorage.setItem('geronda_installed','1')}catch(e){}window.__bip=null;window.dispatchEvent(new Event('bip-ready'));});
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Nunito:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -56,7 +61,8 @@ input[type=range]{height:4px;-webkit-appearance:none;appearance:none;background:
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);cursor:pointer}
 
 /* Install banner */
-.install-banner{position:fixed;bottom:20px;left:20px;right:20px;padding:16px 20px;background:var(--bgCard);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--cardBorder);border-radius:20px;display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:100;animation:slideUp .4s ease;box-shadow:var(--cardShadow)}
+.install-banner{position:fixed;bottom:calc(16px + env(safe-area-inset-bottom));left:12px;right:12px;max-width:440px;margin:0 auto;padding:14px 16px;background:var(--bgCard);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--cardBorder);border-radius:22px;display:flex;align-items:center;gap:14px;z-index:150;box-shadow:0 10px 36px rgba(40,60,40,.22);animation:instal-in .5s cubic-bezier(.2,.8,.3,1) both}
+@keyframes instal-in{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
 .install-banner button{padding:8px 18px;border-radius:20px;border:none;cursor:pointer;font-size:13px;font-weight:600}
 .install-btn{background:var(--accent);color:#fff}
 .dismiss-btn{background:transparent;color:var(--textM)}
@@ -8171,9 +8177,20 @@ function OAplikaciji({
     className: 'card'
   }, H('Извори'), P('Свето Писмо Новог завјета по Синодском издању СПЦ, псалми у преводу Ђуре Даничића. Светитељи по Охридском прологу Светог Николаја Охридског и Жичког, а читања дана по црквеном лекционару. Учење Отаца по њиховим дјелима, увијек са назнаком извора.', {
     fontSize: 14
-  })), React.createElement('button', {
-    onClick: podijeli,
+  })), !(window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches) && React.createElement('button', {
+    onClick: () => window.dispatchEvent(new Event('geronda-install')),
     className: 'primary-btn',
+    style: {
+      alignSelf: 'center',
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: 10
+    }
+  }, React.createElement(InstalIkona, {
+    size: 26
+  }), 'Инсталирај апликацију'), React.createElement('button', {
+    onClick: podijeli,
+    className: 'secondary-btn',
     style: {
       alignSelf: 'center'
     }
@@ -9909,11 +9926,64 @@ function Scene({
     } : undefined
   }, svg);
 }
+function instalUputstvo() {
+  const ua = navigator.userAgent || '';
+  const ios = /iPad|iPhone|iPod/.test(ua) || navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+  const inApp = /FBAN|FBAV|FB_IAB|Instagram|Line\/|Viber|MicroMessenger|Snapchat|TikTok|musical_ly|; wv\)/i.test(ua);
+  const android = /Android/i.test(ua);
+  if (inApp) return {
+    naslov: 'Отворите у прегледачу',
+    uvod: 'Страница је отворена унутар Facebook-а, Viber-а или неке друге апликације. Одатле се Геронда не може инсталирати.',
+    koraci: ['Додирните ⋮ или ··· у горњем десном углу', 'Изаберите „Отвори у прегледачу“ (Chrome или Safari)', 'Тамо ће вам Геронда понудити инсталацију']
+  };
+  if (ios) return {
+    naslov: 'Инсталирајте на iPhone',
+    uvod: 'На iPhone-у се апликација додаје на почетни екран у три корака:',
+    koraci: ['Додирните дугме Дијели ⎙ — у Safari-ју је на дну екрана, у Chrome-у горе десно', 'Помјерите се доље и изаберите „Додај на почетни екран“', 'Додирните „Додај“ у горњем десном углу']
+  };
+  if (/SamsungBrowser/i.test(ua)) return {
+    naslov: 'Инсталирајте у Samsung Internet-у',
+    uvod: '',
+    koraci: ['Додирните мени ☰ доље десно', 'Изаберите „Додај страницу на“', 'Изаберите „Почетни екран“']
+  };
+  if (/Firefox|FxiOS/i.test(ua)) return {
+    naslov: 'Инсталирајте у Firefox-у',
+    uvod: '',
+    koraci: ['Додирните мени ⋮', 'Изаберите „Инсталирај“ или „Додај на почетни екран“', 'Потврдите']
+  };
+  if (android) return {
+    naslov: 'Инсталирајте на Android',
+    uvod: '',
+    koraci: ['Додирните мени ⋮ у горњем десном углу Chrome-а', 'Изаберите „Инсталирај апликацију“ или „Додај на почетни екран“', 'Потврдите са „Инсталирај“']
+  };
+  return {
+    naslov: 'Инсталирајте на рачунар',
+    uvod: '',
+    koraci: ['У Chrome-у или Edge-у кликните иконицу за инсталацију на крају адресне траке', 'или отворите мени ⋮ и изаберите „Инсталирај Геронду…“', 'Геронда ће се отварати као засебна апликација']
+  };
+}
+function InstalIkona({
+  size
+}) {
+  return React.createElement('img', {
+    src: './icons/icon-192.png',
+    alt: '',
+    width: size,
+    height: size,
+    style: {
+      width: size,
+      height: size,
+      borderRadius: size * 0.23,
+      boxShadow: '0 4px 14px rgba(60,80,50,.25)',
+      flexShrink: 0
+    }
+  });
+}
 function App() {
   const [page, setPage] = useState('home');
   const [lang, setLang] = useState(_lang);
   const [theme, setTheme] = useState(_theme);
-  const [installPrompt, setInstallPrompt] = useState(null);
+  const [installPrompt, setInstallPrompt] = useState(() => window.__bip);
   const [showBanner, setShowBanner] = useState(false);
   const [showIOSHelp, setShowIOSHelp] = useState(false);
   const isIOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
@@ -9932,29 +10002,55 @@ function App() {
   };
   useEffect(() => {
     document.body.setAttribute('data-theme', theme);
-    window.addEventListener('beforeinstallprompt', e => {
-      e.preventDefault();
-      setInstallPrompt(e);
-      if (!localStorage.getItem('mindful_installed')) setShowBanner(true);
-    });
-    if (isIOS && !isStandalone && !localStorage.getItem('mindful_ios_dismissed')) {
-      setTimeout(() => setShowBanner(true), 20000);
+    const osvjezi = () => setInstallPrompt(window.__bip);
+    window.addEventListener('bip-ready', osvjezi);
+    const otvori = () => install();
+    window.addEventListener('geronda-install', otvori);
+    let odlozeno = 0;
+    try {
+      odlozeno = +localStorage.getItem('geronda_install_later') || 0;
+    } catch (e) {}
+    let instalirano = false;
+    try {
+      instalirano = !!localStorage.getItem('geronda_installed');
+    } catch (e) {}
+    let tm = null;
+    if (!isStandalone && !instalirano && Date.now() > odlozeno) {
+      tm = setTimeout(() => setShowBanner(true), 2500);
     }
+    return () => {
+      window.removeEventListener('bip-ready', osvjezi);
+      window.removeEventListener('geronda-install', otvori);
+      clearTimeout(tm);
+    };
   }, []);
   const install = async () => {
-    if (isIOS) {
-      setShowIOSHelp(true);
+    const bip = window.__bip || installPrompt;
+    if (bip) {
+      try {
+        bip.prompt();
+        const r = await bip.userChoice;
+        if (r.outcome === 'accepted') {
+          try {
+            localStorage.setItem('geronda_installed', '1');
+          } catch (e) {}
+        }
+      } catch (e) {
+        setShowIOSHelp(true);
+      }
+      window.__bip = null;
+      setInstallPrompt(null);
+      setShowBanner(false);
       return;
     }
-    if (!installPrompt) return;
-    installPrompt.prompt();
-    const r = await installPrompt.userChoice;
-    if (r.outcome === 'accepted') localStorage.setItem('mindful_installed', '1');
     setShowBanner(false);
+    setShowIOSHelp(true);
   };
   const dismissBanner = () => {
     setShowBanner(false);
-    if (isIOS) localStorage.setItem('mindful_ios_dismissed', '1');
+    try {
+      localStorage.setItem('geronda_install_later', String(Date.now() + 3 * 86400000));
+    } catch (e) {}
   };
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -10026,150 +10122,137 @@ function App() {
     onBack: back
   }), showBanner && !isStandalone && React.createElement('div', {
     className: 'install-banner'
-  }, React.createElement('div', null, React.createElement('div', {
-    style: {
-      color: 'var(--text)',
-      fontSize: 14,
-      fontWeight: 600
-    }
-  }, t('Install Geronda')), React.createElement('div', {
-    style: {
-      color: 'var(--textM)',
-      fontSize: 12,
-      marginTop: 2
-    }
-  }, t('Add to home screen for the full experience'))), React.createElement('div', {
-    style: {
-      display: 'flex',
-      gap: 8
-    }
-  }, React.createElement('button', {
-    onClick: dismissBanner,
-    className: 'dismiss-btn'
-  }, t('Later')), React.createElement('button', {
-    onClick: install,
-    className: 'install-btn'
-  }, t('Install')))), showIOSHelp && React.createElement('div', {
-    style: {
-      position: 'fixed',
-      inset: 0,
-      background: 'rgba(0,0,0,0.6)',
-      zIndex: 200,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: 20
-    },
-    onClick: () => setShowIOSHelp(false)
-  }, React.createElement('div', {
-    style: {
-      background: 'var(--bg)',
-      borderRadius: 20,
-      padding: 24,
-      maxWidth: 360,
-      width: '100%'
-    },
-    onClick: e => e.stopPropagation()
-  }, React.createElement('div', {
-    style: {
-      textAlign: 'center',
-      marginBottom: 16
-    }
-  }, React.createElement('img', {
-    src: LOGO_SRC,
-    style: {
-      width: 64,
-      height: 64,
-      marginBottom: 8
-    }
+  }, React.createElement(InstalIkona, {
+    size: 52
   }), React.createElement('div', {
     style: {
-      fontSize: 18,
-      fontFamily: 'var(--font-d)',
-      fontWeight: 500,
-      color: 'var(--text)'
-    }
-  }, t('Install Geronda'))), React.createElement('div', {
-    style: {
-      fontSize: 14,
-      color: 'var(--textM)',
-      lineHeight: 1.7,
-      marginBottom: 16
+      flex: 1,
+      minWidth: 0
     }
   }, React.createElement('div', {
     style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 10,
-      marginBottom: 10
-    }
-  }, React.createElement('span', {
-    style: {
-      background: 'var(--accent)',
-      color: '#fff',
-      width: 24,
-      height: 24,
-      borderRadius: 12,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      fontSize: 12,
+      color: 'var(--text)',
+      fontSize: 15,
       fontWeight: 600,
-      flexShrink: 0
+      fontFamily: 'var(--font-cyr)'
     }
-  }, '1'), React.createElement('div', null, _lang === 'bs' ? 'Додирните дугме ' : 'Tap the ', React.createElement('span', {
+  }, 'Инсталирајте Геронду'), React.createElement('div', {
     style: {
-      fontSize: 18,
-      verticalAlign: 'middle'
-    }
-  }, '⎙'), _lang === 'bs' ? ' (Дијељење) на дну Сафари-ја' : ' (Share) button at the bottom of Safari')), React.createElement('div', {
-    style: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 10,
-      marginBottom: 10
-    }
-  }, React.createElement('span', {
-    style: {
-      background: 'var(--accent)',
-      color: '#fff',
-      width: 24,
-      height: 24,
-      borderRadius: 12,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
+      color: 'var(--textM)',
       fontSize: 12,
-      fontWeight: 600,
-      flexShrink: 0
+      marginTop: 2,
+      lineHeight: 1.45,
+      fontFamily: 'var(--font-cyr)'
     }
-  }, '2'), React.createElement('div', null, _lang === 'bs' ? 'Помјерите се доље и изаберите "Додај на почетни екран"' : 'Scroll down and tap "Add to Home Screen"')), React.createElement('div', {
+  }, 'Иконица на почетном екрану, брже отварање, ради и без интернета.'), React.createElement('div', {
     style: {
       display: 'flex',
-      alignItems: 'center',
-      gap: 10
+      gap: 8,
+      marginTop: 10
     }
-  }, React.createElement('span', {
-    style: {
-      background: 'var(--accent)',
-      color: '#fff',
-      width: 24,
-      height: 24,
-      borderRadius: 12,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      fontSize: 12,
-      fontWeight: 600,
-      flexShrink: 0
-    }
-  }, '3'), React.createElement('div', null, _lang === 'bs' ? 'Додирните "Додај" у горњем десном углу' : 'Tap "Add" in the top right'))), React.createElement('button', {
-    onClick: () => setShowIOSHelp(false),
-    className: 'primary-btn',
-    style: {
-      width: '100%'
-    }
-  }, _lang === 'bs' ? 'У реду' : 'OK'))));
+  }, React.createElement('button', {
+    onClick: install,
+    className: 'install-btn'
+  }, 'Инсталирај'), React.createElement('button', {
+    onClick: dismissBanner,
+    className: 'dismiss-btn'
+  }, 'Не сада')))), showIOSHelp && (() => {
+    const u = instalUputstvo();
+    return React.createElement('div', {
+      style: {
+        position: 'fixed',
+        inset: 0,
+        background: 'rgba(0,0,0,0.55)',
+        zIndex: 200,
+        display: 'flex',
+        alignItems: 'flex-end',
+        justifyContent: 'center',
+        padding: 16
+      },
+      onClick: () => setShowIOSHelp(false)
+    }, React.createElement('div', {
+      className: 'instal-list',
+      style: {
+        background: 'var(--bg)',
+        borderRadius: 22,
+        padding: '22px 22px 18px',
+        maxWidth: 400,
+        width: '100%',
+        boxShadow: '0 -10px 40px rgba(0,0,0,.25)'
+      },
+      onClick: e => e.stopPropagation()
+    }, React.createElement('div', {
+      style: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: 14,
+        marginBottom: 14
+      }
+    }, React.createElement(InstalIkona, {
+      size: 56
+    }), React.createElement('div', null, React.createElement('div', {
+      style: {
+        fontSize: 18,
+        fontFamily: 'var(--font-cyr)',
+        fontWeight: 600,
+        color: 'var(--text)'
+      }
+    }, u.naslov), React.createElement('div', {
+      style: {
+        fontSize: 12,
+        color: 'var(--textD)',
+        fontFamily: 'var(--font-cyr)',
+        marginTop: 2
+      }
+    }, 'Геронда · Православна психотерапија'))), u.uvod && React.createElement('div', {
+      style: {
+        fontSize: 14,
+        color: 'var(--textM)',
+        lineHeight: 1.6,
+        marginBottom: 12,
+        fontFamily: 'var(--font-cyr)'
+      }
+    }, u.uvod), React.createElement('div', {
+      style: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 10,
+        marginBottom: 18
+      }
+    }, ...u.koraci.map((k, i) => React.createElement('div', {
+      key: i,
+      style: {
+        display: 'flex',
+        alignItems: 'flex-start',
+        gap: 12,
+        fontSize: 14,
+        color: 'var(--text)',
+        lineHeight: 1.55,
+        fontFamily: 'var(--font-cyr)'
+      }
+    }, React.createElement('span', {
+      style: {
+        background: 'var(--accent)',
+        color: '#fff',
+        width: 24,
+        height: 24,
+        borderRadius: 12,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: 12,
+        fontWeight: 600,
+        flexShrink: 0,
+        marginTop: 1
+      }
+    }, i + 1), k))), React.createElement('button', {
+      onClick: () => setShowIOSHelp(false),
+      className: 'primary-btn',
+      style: {
+        width: '100%'
+      }
+    }, 'У реду')));
+  })());
 }
 ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(App));
 </script>
