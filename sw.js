@@ -1,4 +1,4 @@
-const CACHE_NAME = 'geronda-v12';
+const CACHE_NAME = 'geronda-v13';
 const ASSETS = [
   './',
   './index.html',
@@ -16,11 +16,13 @@ const ASSETS = [
   './icons/apple-touch-icon.png',
   './icons/favicon.png'
 ];
+// Fontovi sa Google-a: čuvaju se pri prvom učitavanju, da i oni rade bez interneta.
+const FONT_HOSTS = ['fonts.googleapis.com', 'fonts.gstatic.com'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(
-    caches.open(CACHE_NAME).then((c) => 
-      Promise.allSettled(ASSETS.map(url => c.add(url).catch(err => console.warn('Cache miss:', url))))
+    caches.open(CACHE_NAME).then((c) =>
+      Promise.allSettled(ASSETS.map((url) => c.add(url).catch(() => console.warn('Cache miss:', url))))
     )
   );
   self.skipWaiting();
@@ -36,20 +38,19 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
+  if (e.request.method !== 'GET') return;
   const url = new URL(e.request.url);
-  // External APIs never cached
-  if (url.hostname === 'api.anthropic.com' || url.hostname === 'api.groq.com' || url.pathname.includes('/api/')) {
-    e.respondWith(fetch(e.request).catch(() => new Response('{"error":"offline"}', { status: 503, headers: { 'Content-Type': 'application/json' } })));
-    return;
-  }
-  // Cache-first for everything
+  const sameOrigin = url.origin === self.location.origin;
+  const font = FONT_HOSTS.includes(url.hostname);
+  if (!sameOrigin && !font) return;
+
   e.respondWith(
     caches.match(e.request).then((cached) => cached || fetch(e.request).then((resp) => {
-      if (resp.ok && resp.type === 'basic') {
+      if ((sameOrigin && resp.ok) || (font && (resp.ok || resp.type === 'opaque'))) {
         const clone = resp.clone();
         caches.open(CACHE_NAME).then((c) => c.put(e.request, clone));
       }
       return resp;
-    }).catch(() => caches.match('./index.html')))
+    }).catch(() => sameOrigin ? caches.match('./index.html') : Response.error()))
   );
 });
